@@ -1,7 +1,10 @@
 <template>
   <header>
-    <div class="container">
-      header
+    <div class="container header_container">
+      <NuxtLink no-prefetch to="/" >
+        <img src="http://nuxt-slot/client/img/logo.png" class="logo">
+      </NuxtLink>
+      <NuxtLink no-prefetch to="/igrovue-avtomatu.html" >Онлайн казино</NuxtLink>
     </div>
   </header>
 </template>
@@ -18,8 +21,9 @@
 </script>
 
 <style>
-  header {
-    height: 100px;
-    background: red;
+  .header_container {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
   }
 </style>

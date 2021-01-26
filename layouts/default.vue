@@ -15,5 +15,13 @@
     }
 </script>
 <style>
-
+  *{
+    margin: 0px;
+    padding: 0px;
+  }
+  .container {
+    width: 1270px;
+    margin: 0 auto;
+    max-width: 90%;
+  }
 </style>
