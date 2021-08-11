@@ -1,44 +1,101 @@
 <template>
   <main>
-      <app_banner></app_banner>
-      <app_h1 :value="data.body.h1"></app_h1>
-      <app_casino_loop :posts="data.body.casino"></app_casino_loop>
-      <app_content :value="data.body.content"></app_content>
-      <app_blog_card :posts="data.body.blog"></app_blog_card>
+    <app_banner      :value="data.body.h1"></app_banner>
+    <app_breadcrumb  :value="data.body.title"></app_breadcrumb>
+    <app_casino_top  :value="data.body"></app_casino_top>
+    <app_bonuses     :value="data.body.event"></app_bonuses>
+    <app_video       :banner_src="data.body.video_banner" 
+                     :video_src="data.body.video_iframe"
+                     ></app_video>
+    <app_content     :value="data.body.content"></app_content>
+    <app_faq         :value="data.body.faq"
+                     :title="data.body.faq_title"
+                     ></app_faq>
+    <app_reviews     :value="data.body.reviews" 
+                     :title="data.body.title"></app_reviews>
+    <app_form_review :id="data.body.id"></app_form_review>      
+    <app_slick_button :referal="data.body.ref"></app_slick_button>          
   </main>
 </template>
 
 <script>
-    import DAL_Page from '../DAL/static_pages'
-    import app_h1 from '../components/h1/app-h1'
-    import app_content from '../components/content/app-content'
-    import app_casino_loop from '../components/casino_loop/app_casino_loop'
-    import app_banner from '../components/banner/app_banner_main'
-    import app_blog_card from '../components/blog_card/app_blog_card'
+    import DAL_Page from '~/DAL/static_pages'
+    import app_banner from '~/components/banner/app_banner_casino'
+    import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
+    import app_casino_top from '~/components/casino_top/app_casino_top'
+    import app_bonuses from '../../components/bonuses/app_bonuses.vue'
+    import app_content from '~/components/content/app-content'
+    import app_faq from '~/components/faq/app_faq'
+    import app_reviews from '~/components/reviews/app_reviews'
+    import app_form_review from '~/components/form_review/app_form_review'
+    import app_video from '~/components/video/app_video'
+    import app_slick_button from '~/components/slick_button/app_slick_button'
     import config from '~/config/index'
-export default {
-    name: "main-page",
-    data: () => {
-        return {
-            data: {}
-        }
-    },
-    components: {app_h1, app_content, app_casino_loop, app_banner, app_blog_card},
-    async asyncData({store, route}) {
-        const request = {
-            type: 'page',
-            url: '/'
-        }
-        const response = await DAL_Page.getData(request)
-        const body = response.data  
-        const data = body
-        data.body.currentUrl = config.BASE_URL
-        return {data}
-    },
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
+    export default {
+        name: "app_single_casino",
+        components: {app_banner, app_content, app_breadcrumb, app_casino_top, 
+        app_reviews, app_form_review, app_faq, app_video, app_slick_button, app_bonuses},
+        data: () => {
+            return {
+               data: {},
+            }
+        },
+        async asyncData({route, error}) {
+            const request = {
+                type: 'casino',
+                url: route.params.id
+            }
+           const response = await DAL_Page.getData(request)
+           if(response.data.status === '404') {
+               error({ statusCode: 404, message: 'Post not found' })
+           } 
+           else {
+               const body = response.data  
+               const data = body
+               data.body = data.body
+               const faq = []
+               const event = []
+               data.body.faq.forEach(element => {
+                faq.push({
+                    status: 'close',
+                    answer: element.answer,
+                    question: element.question
+                })
+               })
+               data.body.event.forEach(element => {
+                    let ref = []
+                    if(element.event_ref.length === 0) ref = data.body.ref
+                    else {
+                        element.event_ref.forEach(element => {
+                            ref.push({
+                                casino_ref: element.event_ref.length === 0 ? data.body.ref : element.event_ref
+                            })
+                        });
+                    }
+
+                    event.push({
+                        status: 'close',
+                        title: element.event_title,
+                        description: element.event_description,
+                        start: element.event_start,
+                        end: element.event_end,
+                        name: element.event_name,
+                        site: element.event_site,
+                        ref: ref,
+                        thumbnail: data.body.thumbnail
+                    })
+               })
+
+               data.body.faq = faq
+               data.body.event = event
+               data.body.currentUrl = config.BASE_URL + route.path
+               return {data}
+           }
+        },
+        head() {
+            return {
+                title: this.data.body.meta_title,
+                meta: [
                 {
                     hid: 'description',
                     name: 'description',
@@ -99,7 +156,7 @@ export default {
                     name: 'robots',
                     content: this.data.body.meta.robots
                 },
-               // og //
+                                // og //
                 {
                     hid: 'og:locale',
                     property: 'og:locale',
@@ -108,7 +165,7 @@ export default {
                 {
                     hid: 'og:type',
                     property: 'og:type',
-                    content: 'website'
+                    content: 'article'
                 },
                 {
                     hid: 'og:title',
@@ -173,16 +230,15 @@ export default {
                     content: this.data.body.currentUrl,
                 },
                 // end twitter //
-
             ],
-            link: [
-                { rel: 'canonical', href: this.data.body.currentUrl}
-            ]
+             link: [
+                   { rel: 'canonical', href: this.data.body.currentUrl}
+                ]
         }
     }
-}
+    }
 </script>
 
-<style>
+<style scoped>
 
 </style>

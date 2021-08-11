@@ -17,7 +17,7 @@
     import app_blog_card from '../components/blog_card/app_blog_card'
     import config from '~/config/index'
 export default {
-    name: "main-page",
+    name: "bonuses",
     data: () => {
         return {
             data: {}
@@ -27,12 +27,12 @@ export default {
     async asyncData({store, route}) {
         const request = {
             type: 'page',
-            url: '/'
+            url: 'bonuses'
         }
         const response = await DAL_Page.getData(request)
         const body = response.data  
         const data = body
-        data.body.currentUrl = config.BASE_URL
+        data.body.currentUrl = config.BASE_URL + route.path
         return {data}
     },
     head() {
@@ -99,7 +99,7 @@ export default {
                     name: 'robots',
                     content: this.data.body.meta.robots
                 },
-               // og //
+                   // og //
                 {
                     hid: 'og:locale',
                     property: 'og:locale',
@@ -173,7 +173,6 @@ export default {
                     content: this.data.body.currentUrl,
                 },
                 // end twitter //
-
             ],
             link: [
                 { rel: 'canonical', href: this.data.body.currentUrl}

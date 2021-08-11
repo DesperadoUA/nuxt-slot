@@ -1,44 +1,64 @@
 <template>
   <main>
-      <app_banner></app_banner>
-      <app_h1 :value="data.body.h1"></app_h1>
-      <app_casino_loop :posts="data.body.casino"></app_casino_loop>
-      <app_content :value="data.body.content"></app_content>
-      <app_blog_card :posts="data.body.blog"></app_blog_card>
+    <app_banner :value="data.body.h1"></app_banner>
+    <app_breadcrumb  :value="data.body.title"></app_breadcrumb>
+    <section>
+        <div class="container blog_section">
+            <div class="blog_section_left">
+                <app_content :value="data.body.content"></app_content>
+            </div>
+            <div class="blog_section_right">
+                <app_sidebar :author="data.body.author"
+                             :date="data.body.date"
+                ></app_sidebar>
+            </div>
+        </div>
+    </section>
+    <app_reviews     :value="data.body.reviews" 
+                     :title="data.body.title"></app_reviews>
+    <app_form_review :id="data.body.id"></app_form_review> 
   </main>
 </template>
 
 <script>
-    import DAL_Page from '../DAL/static_pages'
-    import app_h1 from '../components/h1/app-h1'
-    import app_content from '../components/content/app-content'
-    import app_casino_loop from '../components/casino_loop/app_casino_loop'
-    import app_banner from '../components/banner/app_banner_main'
-    import app_blog_card from '../components/blog_card/app_blog_card'
+    import DAL_Page from '../../DAL/static_pages'
+    import app_banner from '../../components/banner/app_banner_casino'
+    import app_content from '../../components/content/app-content'
+    import app_breadcrumb from '../../components/breadcrumb/app_breadcrumb'
+    import app_reviews from '../../components/reviews/app_reviews'
+    import app_form_review from '../../components/form_review/app_form_review'
+    import app_sidebar from '../../components/sidebar/app_sidebar'
     import config from '~/config/index'
-export default {
-    name: "main-page",
-    data: () => {
-        return {
-            data: {}
-        }
-    },
-    components: {app_h1, app_content, app_casino_loop, app_banner, app_blog_card},
-    async asyncData({store, route}) {
-        const request = {
-            type: 'page',
-            url: '/'
-        }
-        const response = await DAL_Page.getData(request)
-        const body = response.data  
-        const data = body
-        data.body.currentUrl = config.BASE_URL
-        return {data}
-    },
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
+    export default {
+        name: "app_single_blog",
+        components: {app_banner, app_content, app_breadcrumb, app_reviews, app_form_review, app_sidebar},
+        data: () => {
+            return {
+               data: {},
+            }
+        },
+        async asyncData({route, error}) {
+            const request = {
+                type: 'blog',
+                url: route.params.id
+            }
+           const response = await DAL_Page.getData(request)
+           if(response.data.status === '404') {
+               error({ statusCode: 404, message: 'Post not found' })
+           } 
+           else {
+               const body = response.data  
+               const data = body
+               data.body = data.body
+               data.body.currentUrl = config.BASE_URL + route.path
+               return {data}
+           }
+        },
+
+        head() {
+            return {
+                title: this.data.body.meta_title,
+                 meta: [
                 {
                     hid: 'description',
                     name: 'description',
@@ -99,7 +119,7 @@ export default {
                     name: 'robots',
                     content: this.data.body.meta.robots
                 },
-               // og //
+                // og //
                 {
                     hid: 'og:locale',
                     property: 'og:locale',
@@ -108,7 +128,7 @@ export default {
                 {
                     hid: 'og:type',
                     property: 'og:type',
-                    content: 'website'
+                    content: 'article'
                 },
                 {
                     hid: 'og:title',
@@ -172,17 +192,37 @@ export default {
                     name: 'twitter:url',
                     content: this.data.body.currentUrl,
                 },
-                // end twitter //
 
-            ],
-            link: [
-                { rel: 'canonical', href: this.data.body.currentUrl}
-            ]
+                // end twitter //
+                ],
+                link: [
+                   { rel: 'canonical', href: this.data.body.currentUrl}
+                ]
+           }
         }
     }
-}
 </script>
 
 <style>
-
+   .blog_section {
+       display: flex;
+   }
+   .blog_section .container {
+       width: 100%;
+       max-width: 100%;
+   }
+   .blog_section_left {
+       width:918px;
+   }
+   .blog_section_right {
+       flex-grow: 1;
+   }
+   @media (min-width: 320px) and (max-width: 767px) {
+       .blog_section {
+           flex-wrap: wrap;
+       } 
+       .blog_section_left, .blog_section_right {
+           width: 100%;
+       }
+   }
 </style>
