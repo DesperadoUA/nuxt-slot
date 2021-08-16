@@ -11,12 +11,12 @@
 </template>
 
 <script>
-    import DAL_Page from '../../DAL/static_pages'
-    import app_banner from '../../components/banner/app_banner_casino'
-    import app_breadcrumb from '../../components/breadcrumb/app_breadcrumb'
-    import app_casino_loop from '../../components/casino_loop/app_casino_loop'
-    import app_top_content from '../../components/top_content/app_top_content'
-    import app_faq from '../../components/faq/app_faq'
+    import DAL_Page from '~/DAL/static_pages'
+    import app_banner from '~/components/banner/app_banner_casino'
+    import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
+    import app_casino_loop from '~/components/casino_loop/app_casino_loop'
+    import app_top_content from '~/components/top_content/app_top_content'
+    import app_faq from '~/components/faq/app_faq'
     import config from '~/config/index'
     export default {
         name: "app_single_payment",

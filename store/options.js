@@ -1,4 +1,4 @@
-import DAL_Options from '../DAL/options'
+import DAL_Options from '~/DAL/options'
 
 export const state = () => ({
     options: null

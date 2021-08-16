@@ -4,6 +4,7 @@
     <app_breadcrumb  :value="data.body.title"></app_breadcrumb>
     <app_casino_top  :value="data.body"></app_casino_top>
     <app_bonuses     :value="data.body.event"></app_bonuses>
+    <app_how_to      :value="data.body.how_to"></app_how_to>
     <app_video       :banner_src="data.body.video_banner" 
                      :video_src="data.body.video_iframe"
                      ></app_video>
@@ -23,7 +24,8 @@
     import app_banner from '~/components/banner/app_banner_casino'
     import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
     import app_casino_top from '~/components/casino_top/app_casino_top'
-    import app_bonuses from '../../components/bonuses/app_bonuses.vue'
+    import app_bonuses from '~/components/bonuses/app_bonuses.vue'
+    import app_how_to from '~/components/how_to/app_how_to.vue'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
     import app_reviews from '~/components/reviews/app_reviews'
@@ -34,7 +36,7 @@
     export default {
         name: "app_single_casino",
         components: {app_banner, app_content, app_breadcrumb, app_casino_top, 
-        app_reviews, app_form_review, app_faq, app_video, app_slick_button, app_bonuses},
+        app_reviews, app_form_review, app_faq, app_video, app_slick_button, app_bonuses, app_how_to},
         data: () => {
             return {
                data: {},

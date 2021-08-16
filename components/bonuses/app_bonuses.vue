@@ -35,7 +35,20 @@
               </div>
               <div style="display:none" itemprop="location" itemscope itemtype="http://schema.org/VirtualLocation" >
 	              Сайт: <span itemprop="url">{{item.site}}</span>
-	          </div>
+	            </div>
+           <meta itemprop="eventStatus" content="https://schema.org/EventScheduled">
+           <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
+           <span itemprop="organizer" itemscope="" itemtype="https://schema.org/Organization">
+             <meta itemprop="name" content="onlinecasino.kyiv.ua">
+		         <meta itemprop="url" content="onlinecasino.kyiv.ua">
+           </span>
+           <span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+              <meta itemprop="Price" content="0">
+              <meta itemprop="priceCurrency" content="грн/долл.">
+              <meta itemprop="url" :content="item.site">
+              <link itemprop="availability" href="https://schema.org/InStock">
+              <meta itemprop="validFrom" content="2021-08-10 08:00:00+03:00">
+            </span>
          </div>
       </div>
   </section>

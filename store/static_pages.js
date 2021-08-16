@@ -1,4 +1,4 @@
-import DAL_Pages from '../DAL/static_pages'
+import DAL_Pages from '~/DAL/static_pages'
 
 export const state = () => ({
     body: null

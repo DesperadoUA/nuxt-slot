@@ -21,13 +21,13 @@
 </template>
 
 <script>
-    import DAL_Page from '../../DAL/static_pages'
-    import app_banner from '../../components/banner/app_banner_casino'
-    import app_content from '../../components/content/app-content'
-    import app_breadcrumb from '../../components/breadcrumb/app_breadcrumb'
-    import app_reviews from '../../components/reviews/app_reviews'
-    import app_form_review from '../../components/form_review/app_form_review'
-    import app_sidebar from '../../components/sidebar/app_sidebar'
+    import DAL_Page from '~/DAL/static_pages'
+    import app_banner from '~/components/banner/app_banner_casino'
+    import app_content from '~/components/content/app-content'
+    import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
+    import app_reviews from '~/components/reviews/app_reviews'
+    import app_form_review from '~/components/form_review/app_form_review'
+    import app_sidebar from '~/components/sidebar/app_sidebar'
     import config from '~/config/index'
     export default {
         name: "app_single_blog",
