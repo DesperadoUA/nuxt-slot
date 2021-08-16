@@ -65,12 +65,8 @@ export default {
         url: ''
       }
       const {data} = await DAL_Pages.getData(sitemapData)
-      const staticPages = data.static_page
-      const casinoPosts = data.casino
-      const blogPosts = data.blog
-      const vendorsPosts = data.vendors
-      const paymentsPosts = data.payments
-      return staticPages.concat(casinoPosts, blogPosts, paymentsPosts, vendorsPosts)
+      const {static_page, casino, blog, vendors, payments} = data
+      return static_page.concat(casino, blog, vendors, payments)
     }
   }  
 }
