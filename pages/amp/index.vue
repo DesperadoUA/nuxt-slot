@@ -1,30 +1,28 @@
 <template>
-  <main>
-    <app_banner></app_banner>
+<div>
     <app_h1 :value="data.body.h1"></app_h1>
-    <app_casino_loop :posts="data.body.casino"></app_casino_loop>
-    <app_content :value="data.body.content"></app_content>
-    <app_blog_card :posts="data.body.blog"></app_blog_card>
-  </main>
+    <app_casino_loop_amp :posts="data.body.casino" />
+</div>
 </template>
-
 <script>
-    import DAL_Page from '~/DAL/static_pages'
+import DAL_Page from '~/DAL/static_pages'
     import app_h1 from '~/components/h1/app-h1'
     import app_content from '~/components/content/app-content'
-    import app_casino_loop from '~/components/casino_loop/app_casino_loop'
+    import app_casino_loop_amp from '~/components/casino_loop/app_casino_loop_amp'
     import app_banner from '~/components/banner/app_banner_main'
     import app_blog_card from '~/components/blog_card/app_blog_card'
     import config from '~/config/index'
 export default {
     name: "main-page",
+    amp: 'hybrid',
+    ampLayout: 'default.amp',
     data: () => {
         return {
             data: {
             },
         }
     },
-    components: {app_h1, app_content, app_casino_loop, app_banner, app_blog_card},
+    components: {app_h1, app_content, app_casino_loop_amp, app_banner, app_blog_card},
     async asyncData({store, route}) {
         const request = {
             type: 'page',
@@ -35,6 +33,12 @@ export default {
         const data = body
         data.body.currentUrl = config.BASE_URL
         return {data}
+    },
+    async mounted() {
+        const response = await DAL_Page.getData(request)
+        const body = response.data  
+        const data = body
+        console.log('Good day', data)
     },
     head() {
         return {
@@ -183,7 +187,3 @@ export default {
     },
 }
 </script>
-
-<style>
-
-</style>

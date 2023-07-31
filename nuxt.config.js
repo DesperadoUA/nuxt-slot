@@ -14,7 +14,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'script', src: 'https://images.dmca.com/Badges/DMCABadgeHelper.min.js' }
+      //{ rel: 'script', src: 'https://images.dmca.com/Badges/DMCABadgeHelper.min.js' }
     ]
   },
   serverMiddleware: [
@@ -37,7 +37,9 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/amp',
+    ['@nuxtjs/amp', { /* module options */ }]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -68,5 +70,8 @@ export default {
       const {static_page, casino, blog, vendors, payments} = data
       return static_page.concat(casino, blog, vendors, payments)
     }
-  }  
+  },
+  amp: {
+    css: '~/assets/amp-custom.css'
+  }
 }
