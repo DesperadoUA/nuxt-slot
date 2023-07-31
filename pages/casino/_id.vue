@@ -32,7 +32,8 @@
     import app_form_review from '~/components/form_review/app_form_review'
     import app_video from '~/components/video/app_video'
     import app_slick_button from '~/components/slick_button/app_slick_button'
-    import config from '~/config/index'
+    import config from '~/config/index.js'
+    import TRANSLATE from '~/translate/index.js'
     export default {
         name: "app_single_casino",
         components: {app_banner, app_content, app_breadcrumb, app_casino_top, 
@@ -49,7 +50,7 @@
             }
            const response = await DAL_Page.getData(request)
            if(response.data.status === '404') {
-               error({ statusCode: 404, message: 'Post not found' })
+               error({ statusCode: 404, message: TRANSLATE['TEXT_404'][config.LANG] })
            } 
            else {
                const body = response.data  

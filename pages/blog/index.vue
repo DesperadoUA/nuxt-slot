@@ -13,7 +13,7 @@
     import app_content from '../../components/content/app-content'
     import app_banner from '../../components/banner/app_banner_main'
     import app_blog_card from '../../components/blog_card/app_blog_card'
-    import config from '~/config/index'
+    import config from '~/config/index.js'
 export default {
     name: "blog",
     data: () => {

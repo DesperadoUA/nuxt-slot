@@ -17,7 +17,8 @@
     import app_casino_loop from '~/components/casino_loop/app_casino_loop'
     import app_top_content from '~/components/top_content/app_top_content'
     import app_faq from '~/components/faq/app_faq'
-    import config from '~/config/index'
+    import config from '~/config/index.js'
+    import TRANSLATE from '~/translate/index.js'
     export default {
         name: "app_single_payment",
         components: {app_banner, app_breadcrumb, app_casino_loop, app_faq, app_top_content},
@@ -33,7 +34,7 @@
             }
            const response = await DAL_Page.getData(request)
            if(response.data.status === '404') {
-               error({ statusCode: 404, message: 'Post not found' })
+               error({ statusCode: 404, message: TRANSLATE['TEXT_404'][config.LANG] })
            } 
            else { 
                const body = response.data  
