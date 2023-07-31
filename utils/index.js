@@ -1,3 +1,5 @@
+import TRANSLATE from '~/translate/index.js'
+import config from '~/config/index.js'
 export function getRef(item){
     if(item.ref.length !== 0) {
         const min = 0
@@ -15,4 +17,8 @@ export function refActivate(items) {
         const random = Math.floor(Math.random() * (max - min + 1)) + min
         window.open(items[random].casino_ref, '_blank')
     } 
+}
+
+export function getErrorPageObj() {
+   return { statusCode: 404, message: TRANSLATE['TEXT_404'][config.LANG] }
 }

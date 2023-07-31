@@ -29,7 +29,7 @@
     import app_form_review from '~/components/form_review/app_form_review'
     import app_sidebar from '~/components/sidebar/app_sidebar'
     import config from '~/config/index.js'
-    import TRANSLATE from '~/translate/index.js'
+    import { getErrorPageObj } from '~/utils/index.js'
     export default {
         name: "app_single_blog",
         components: {app_banner, app_content, app_breadcrumb, app_reviews, app_form_review, app_sidebar},
@@ -45,7 +45,7 @@
             }
            const response = await DAL_Page.getData(request)
            if(response.data.status === '404') {
-               error({ statusCode: 404, message: TRANSLATE['TEXT_404'][config.LANG] })
+               error(getErrorPageObj())
            } 
            else {
                const body = response.data  

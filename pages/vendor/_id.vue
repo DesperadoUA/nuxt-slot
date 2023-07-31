@@ -18,7 +18,7 @@
     import app_top_content from '~/components/top_content/app_top_content'
     import app_faq from '~/components/faq/app_faq'
     import config from '~/config/index.js'
-    import TRANSLATE from '~/translate/index.js'
+    import { getErrorPageObj } from '~/utils/index.js'
     export default {
         name: "app_single_vendor",
         components: {app_banner, app_top_content, app_breadcrumb, app_casino_loop, app_faq},
@@ -34,7 +34,7 @@
             }
             const response = await DAL_Page.getData(request)
             if(response.data.status === '404') {
-               error({ statusCode: 404, message: TRANSLATE['TEXT_404'][config.LANG] })
+               error(getErrorPageObj())
            } 
            else {
                const body = response.data  
