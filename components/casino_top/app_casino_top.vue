@@ -113,6 +113,7 @@
 </template>
 
 <script>
+import {refActivate} from '~/utils/'
     export default {
         name: "app_casino_top",
         props: ['value'],
@@ -127,13 +128,8 @@
             }
         },
         methods: {
-            refActivate(ref) {
-               if(ref.length !== 0) {
-                    const min = 0
-                    const max = ref.length - 1
-                    const random = Math.floor(Math.random() * (max - min + 1)) + min
-                    window.open(ref[random].casino_ref, '_blank')
-                } 
+            refActivate(items) {
+              refActivate(items)
             }
         }
     }

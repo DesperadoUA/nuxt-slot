@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import {refActivate} from '~/utils/'
     export default {
         name: "app_slick_button",
         props:['referal'],
@@ -34,12 +35,7 @@
         },
         methods: {
             refActivate() {
-                if(this.referal.length !== 0) {
-                    const min = 0
-                    const max = this.referal.length - 1
-                    const random = Math.floor(Math.random() * (max - min + 1)) + min
-                    window.open(this.referal[random].casino_ref, '_blank')
-                } 
+                refActivate(this.referal)
             },
             goHome() {
                 this.$router.push('/')

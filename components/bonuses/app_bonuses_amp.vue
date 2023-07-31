@@ -17,7 +17,7 @@
                       <span itemprop="endDate" :datetime="item.end">{{item.end}}</span>
                   </div>
                   <div class="bonus_item_button_wrapper">
-                      <button class="bonus_item_button" @click="refActivate(item)">Получить</button>
+                      <button class="bonus_item_button" @click="getRef(item)">Получить</button>
                       <button 
                       class="bonus_item_button"
                         @click="activate(item)"  
@@ -55,17 +55,13 @@
 </template>
 
 <script>
+import {getRef} from '~/utils/'
     export default {
         name: "app_bonuses_loop_amp",
         props: ['value'],
         methods: {
-            refActivate(item) {
-                if(item.ref.length !== 0) {
-                    const min = 0
-                    const max = item.ref.length - 1
-                    const random = Math.floor(Math.random() * (max - min + 1)) + min
-                    window.open(item.ref[random].casino_ref, '_blank')
-                } 
+            getRef(item) {
+                return getRef(item)
             },
             activate(item) {
                 item.status === 'close' ? item.status = 'open' : item.status = 'close'

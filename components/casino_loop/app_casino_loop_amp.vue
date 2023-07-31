@@ -3,7 +3,9 @@
       <div class="container">
           <div class="casino_item" v-for="item in currentPosts" :key="item.id">
               <div class="casino_item_thumbnail">
-                  <amp-img :src="item.thumbnail" width="200" height="100" @click="refActivate(item)"></amp-img>
+                  <a :href="getRef(item)">
+                    <amp-img :src="item.thumbnail" width="200" height="100"></amp-img>
+                  </a>
                   <amp-img :src="item.marker" class="casino_item_marker" width="38" height="38"></amp-img>
                   <div class="casino_item_licensed" v-if="item.licensed.length !== 0">
                       <amp-img :src="licensed" v-for="licensed in item.licensed" :key="licensed" width="45" height="45"
@@ -56,6 +58,7 @@
 </template>
 
 <script>
+import {getRef} from '~/utils/'
     export default {
         name: "app_casino_loop_amp",
         props: ['posts'],
@@ -77,12 +80,7 @@
         },
         methods: {
             getRef(item) {
-                if(item.ref.length !== 0) {
-                    const min = 0
-                    const max = item.ref.length - 1
-                    const random = Math.floor(Math.random() * (max - min + 1)) + min
-                    return item.ref[random].casino_ref
-                } 
+                return getRef(item)
             },
             postShowMore(){
                 this.postCurrentPage += 1
