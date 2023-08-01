@@ -8,7 +8,7 @@
 			    <meta itemprop="name" :content="title"/>
 		   </div>
       <div class="container">
-          <div class="reviews_title" itemprop="name">Отзывы игроков о казино {{title}}</div>
+          <div class="reviews_title" itemprop="name">{{translates.PLAYER_REVIEWS_ABOUT_THE_CASINO[config.LANG]}} {{title}}</div>
           <div class="review_item" v-for="(item, index) in currentReviews" :key="index">
               <div class="review_item_title">
                   <span itemprop = 'author'>{{item.review_name}}</span>
@@ -28,16 +28,18 @@
               </div>
           </div>
           <div class="reviews_show_more" v-if="value.length > (numberReviewOnQuery*reviewCurrentPage)">
-              <span class="review_btn_show" @click="reviewShowMore">Показать еще</span>
+              <span class="review_btn_show" @click="reviewShowMore">{{translates.SHOW_MORE[config.LANG]}}</span>
           </div>
       </div>
   </section>
 </template>
 
 <script>
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_reviews",
         props: ['value', 'title'],
+        mixins: [translateMixin],
         data(){
             return {
                 numberReviewOnQuery: 4,

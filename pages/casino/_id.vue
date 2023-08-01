@@ -15,7 +15,7 @@
     <app_reviews     :value="data.body.reviews" 
                      :title="data.body.title"></app_reviews>
     <app_form_review :id="data.body.id"></app_form_review>      
-    <app_slick_button :referal="data.body.ref"></app_slick_button>          
+    <app_slick_button :referal="data.body.ref"></app_slick_button>       
   </main>
 </template>
 

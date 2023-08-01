@@ -28,7 +28,7 @@
                         </div>
                  </div>
                  <div class="casino_item_buttons_box casino_top_btn_wrapper">
-                    <button class="btn_ref" @click="refActivate(value.ref)" >Перейти</button>
+                    <button class="btn_ref" @click="refActivate(value.ref)" >{{translates.GO_TO[config.LANG]}}</button>
                  </div>
               </div>
               <div class="casino_top_right">
@@ -46,7 +46,7 @@
                       </div>
                   </div>
                   <div class="casino_top_currency casino_top_desc_row" v-if="value.currency.length !== 0">
-                        <div class="casino_top_desc">Принимает игроков:</div>
+                        <div class="casino_top_desc">{{translates.ACCEPTS_PLAYERS[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                             <div class="casino_top_currency_item"  
                                 v-for="(item, index) in value.currency" 
@@ -56,13 +56,13 @@
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.valuta !== ''">
-                        <div class="casino_top_desc">Валюты:</div>
+                        <div class="casino_top_desc">{{translates.CURRENCIES[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            {{value.valuta}}
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.relative_payments.length !== 0">
-                        <div class="casino_top_desc">Методы оплаты:</div>
+                        <div class="casino_top_desc">{{translates.PAYMENT_METHODS[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            <ul class="casino_top_list">
                                <li v-for="(item, index) in value.relative_payments" 
@@ -73,7 +73,7 @@
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.relative_pay_out.length !== 0">
-                        <div class="casino_top_desc">Методы выплат:</div>
+                        <div class="casino_top_desc">{{translates.PAYMENT_OUT_METHODS[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            <ul class="casino_top_list ">
                                <li v-for="(item, index) in value.relative_pay_out" 
@@ -84,19 +84,19 @@
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.min_deposit !== ''">
-                        <div class="casino_top_desc">Минимальный депозит:</div>
+                        <div class="casino_top_desc">{{translates.MINIMUM_DEPOSIT[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            {{value.min_deposit}}
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.min_payout !== ''">
-                        <div class="casino_top_desc">Минимальная выплата:</div>
+                        <div class="casino_top_desc">{{translates.MINIMUM_PAYMENT[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            {{value.min_payout}}
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.relative_vendors.length !== 0">
-                        <div class="casino_top_desc">Платформы:</div>
+                        <div class="casino_top_desc">{{translates.PLATFORMS[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            <ul class="casino_top_list">
                                <li v-for="(item, index) in value.relative_vendors" 
@@ -114,9 +114,11 @@
 
 <script>
 import {refActivate} from '~/utils/'
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_casino_top",
         props: ['value'],
+        mixins: [translateMixin],
         data(){
             return {
                 

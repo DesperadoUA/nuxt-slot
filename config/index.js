@@ -1,4 +1,5 @@
 export default {
     BASE_URL: 'https://onlinecasino.kyiv.ua',
-    LANG: 'RU'
+    LANG: 'RU',
+    DOMAIN: 'onlinecasino.kyiv.ua'
 }

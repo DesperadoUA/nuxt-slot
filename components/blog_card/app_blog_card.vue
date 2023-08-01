@@ -18,29 +18,31 @@
                      </NuxtLink>
                  </div>
                  <div class="blog_card_item_author">
-                   <p>Автор обзора: <span>{{item.author}}</span> {{item.date | post_data}}</p>    
+                   <p>{{translates.REVIEW_AUTHOR[config.LANG]}}: <span>{{item.author}}</span> {{item.date | post_data}}</p>    
                  </div>   
                  <div class="blog_card_item_excerpt">
                      {{item.excerpt}}
                  </div>
                  <div class="blog_card_item_btn_wrapper">
                      <NuxtLink no-prefetch :to="item.permalink" 
-                               class="blog_card_item_btn">Подробный обзор
+                               class="blog_card_item_btn">{{translates.DETAILED_OVERVIEW[config.LANG]}}
                      </NuxtLink>
                  </div>
              </div>
          </div>
-         <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)">
-           <button class="btn_review" @click="postShowMore">Загрузить еще</button>
+         <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)" >
+           <button class="btn_review" @click="postShowMore">{{translates.DOWNLOAD_MORE[config.LANG]}}</button>
          </div>
       </div>
   </section>
 </template>
 
 <script>
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_casino_loop",
         props: ['posts'],
+        mixins: [translateMixin],
         data(){
             return {
                 numberPostOnQuery: 8,

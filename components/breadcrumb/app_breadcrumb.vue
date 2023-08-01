@@ -8,7 +8,7 @@
                             itemscope=""
                             itemprop="item"
                             id="homePage"
-                  ><span itemprop="name">Онлайн казино Украины</span></NuxtLink> /
+                  ><span itemprop="name">{{translates.ONLINE_CASINO_IN_UKRAINE[config.LANG]}}</span></NuxtLink> /
                   <meta itemprop="position" content="1">
               </li>
               <li class="breadcrumb_item" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
@@ -27,9 +27,11 @@
 </template>
 
 <script>
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_breadcrumb",
         props: ['value'],
+        mixins: [translateMixin],
         data(){
             return {
                 

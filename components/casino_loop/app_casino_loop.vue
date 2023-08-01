@@ -44,22 +44,24 @@
               </div>
               <div class="casino_item_buttons casino_item_column ">
                   <div class="casino_item_buttons_box">
-                    <button class="btn_ref" @click="refActivate(item)">Перейти</button>
-                    <NuxtLink class="btn_review" no-prefetch :to="item.permalink" >Обзор</NuxtLink>
+                    <button class="btn_ref" @click="refActivate(item)">{{translates.GO_TO[config.LANG]}}</button>
+                    <NuxtLink class="btn_review" no-prefetch :to="item.permalink" >{{translates.REVIEW[config.LANG]}}</NuxtLink>
                   </div>
               </div>
           </div>  
           <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)">
-              <button class="btn_review" @click="postShowMore">Загрузить еще</button>
+              <button class="btn_review" @click="postShowMore">{{translates.DOWNLOAD_MORE[config.LANG]}}</button>
           </div>
       </div>
   </section>
 </template>
 
 <script>
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_casino_loop",
         props: ['posts'],
+        mixins: [translateMixin],
         data(){
             return {
                 numberPostOnQuery: 20,

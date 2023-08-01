@@ -1,13 +1,15 @@
 <template>
   <aside class="sidebar">
-      <div class="sidebar_item">Автор обзора: <span>{{author}}</span></div>
-      <div class="sidebar_item">Дата публикации: {{date | dateSlice}}</div>
+      <div class="sidebar_item">{{translates.REVIEW_AUTHOR[config.LANG]}}: <span>{{author}}</span></div>
+      <div class="sidebar_item">{{translates.PUBLICATION_DATE[config.LANG]}}: {{date | dateSlice}}</div>
   </aside>
 </template>
 <script>
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_sidebar",
         props: ['author', 'date'],
+        mixins: [translateMixin],
         data(){
             return {
                 

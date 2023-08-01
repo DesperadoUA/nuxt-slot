@@ -9,7 +9,7 @@
              >
       </NuxtLink>
       <div class="menu">
-           <button class="btn header_btn">Казино Украины</button>
+           <button class="btn header_btn">{{translates.CASINO_UKRAINE[config.LANG]}}</button>
            <div class="dropdown_menu">
              <nav class="menu_box">
                <ul>
@@ -28,8 +28,10 @@
   </header>
 </template>
 <script>
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app-header",
+        mixins: [translateMixin],
         data(){
             return {
                 options: {}

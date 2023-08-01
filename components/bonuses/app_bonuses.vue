@@ -1,7 +1,7 @@
 <template>
   <section class="bonus_card_wrapper" v-if="value.length !== 0" >
       <div class="container">
-         <div class="bonus_card_ttl">Бонусы казино</div>
+         <div class="bonus_card_ttl">{{translates.CASINO_BONUSES[config.LANG]}}</div>
          <div class="bonus_item" v-for="(item, i) in value" :key="i" itemscope itemtype="http://schema.org/Event">
              <div class="bonus_item_thumbnail">
                   <img
@@ -13,22 +13,22 @@
               <div class="bonus_item_action">
                   <div class="bonus_item_ttl" v-html="item.title" itemprop="name"></div>
                   <div class="bonus_item_time">
-                      с <span itemprop="startDate" :datetime="item.start">{{item.start}}</span> до 
+                      с <span itemprop="startDate" :datetime="item.start">{{item.start}}</span> {{translates.BEFORE[config.LANG]}} 
                       <span itemprop="endDate" :datetime="item.end">{{item.end}}</span>
                   </div>
                   <div class="bonus_item_button_wrapper">
-                      <button class="bonus_item_button" @click="refActivate(item.ref)">Получить</button>
+                      <button class="bonus_item_button" @click="refActivate(item.ref)">{{translates.GET[config.LANG]}}</button>
                       <button 
                       class="bonus_item_button"
                         @click="activate(item)"  
                       >
-                          Описание
+                          {{translates.DESCRIPTION[config.LANG]}}
                           <span :class="{event_close: true, rotate_arrow: item.status === 'open'}" ></span>
                       </button>
                   </div>
               </div>
               <div class="bonus_item_author" itemprop="performer" itemscope itemtype="http://schema.org/Person">
-                  <span itemprop="name">Автор: {{item.name}}</span>
+                  <span itemprop="name">{{translates.AUTHOR[config.LANG]}}: {{item.name}}</span>
               </div>
               <div :class="{bonus_item_description: true, show: item.status === 'open'}">
                   <p v-html="item.description" itemprop="description"></p>
@@ -39,8 +39,8 @@
            <meta itemprop="eventStatus" content="https://schema.org/EventScheduled">
            <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
            <span itemprop="organizer" itemscope="" itemtype="https://schema.org/Organization">
-             <meta itemprop="name" content="onlinecasino.kyiv.ua">
-		         <meta itemprop="url" content="onlinecasino.kyiv.ua">
+             <meta itemprop="name" :content="config.DOMAIN">
+		         <meta itemprop="url" :content="config.DOMAIN">
            </span>
            <span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
               <meta itemprop="Price" content="0">
@@ -56,9 +56,11 @@
 
 <script>
 import {refActivate} from '~/utils/'
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_bonuses_loop",
         props: ['value'],
+        mixins: [translateMixin],
         methods: {
             refActivate(items) {
                refActivate(items);
