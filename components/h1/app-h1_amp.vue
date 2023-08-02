@@ -10,10 +10,5 @@
     export default {
         name: "app-h1_amp",
         props: ['value'],
-        data(){
-            return {
-                
-            }
-        },
     }
 </script>

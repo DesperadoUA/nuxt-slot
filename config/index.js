@@ -1,5 +1,6 @@
 export default {
     BASE_URL: 'https://onlinecasino.kyiv.ua',
     LANG: 'RU',
-    DOMAIN: 'onlinecasino.kyiv.ua'
+    DOMAIN: 'onlinecasino.kyiv.ua',
+    AMP_PREFIX: '/amp'
 }

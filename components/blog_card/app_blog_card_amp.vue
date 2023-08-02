@@ -4,45 +4,44 @@
          <div class="blog_card_item" v-for="item in currentPosts" :key="item.id">
              <div class="blog_card_item_left">
                  <div class="blog_card_item_img_wrapper">
-                    <img :src="item.thumbnail" 
-                         loading="lazy"
+                    <amp-img :src="item.thumbnail"
                          class="blog_card_item_thumbnail" 
                          width="320" 
-                         height="190">
+                         height="190"></amp-img>
                  </div>
              </div>
              <div class="blog_card_item_right">
                  <div class="blog_card_item_title">
-                     <NuxtLink no-prefetch :to="item.permalink" 
-                               class="blog_card_item_permalink" 
-                               v-html="item.title"
-                    >
+                     <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" 
+                               class="blog_card_item_permalink" v-html="item.title">
                      </NuxtLink>
                  </div>
                  <div class="blog_card_item_author">
-                   <p>Автор обзора: <span>{{item.author}}</span> {{item.date | post_data}}</p>    
+                   <p>{{translates.REVIEW_AUTHOR[config.LANG]}}: <span>{{item.author}}</span> {{item.date | post_data}}</p>    
                  </div>   
                  <div class="blog_card_item_excerpt">
                      {{item.excerpt}}
                  </div>
                  <div class="blog_card_item_btn_wrapper">
-                     <NuxtLink no-prefetch :to="item.permalink" 
-                               class="blog_card_item_btn">Подробный обзор
+                     <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" 
+                               class="blog_card_item_btn">{{translates.DETAILED_OVERVIEW[config.LANG]}}
                      </NuxtLink>
                  </div>
              </div>
          </div>
-         <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)">
-           <button class="btn_review" @click="postShowMore">Загрузить еще</button>
+         <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)" >
+           <button class="btn_review" @click="postShowMore">{{translates.DOWNLOAD_MORE[config.LANG]}}</button>
          </div>
       </div>
   </section>
 </template>
 
 <script>
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_casino_loop",
         props: ['posts'],
+        mixins: [translateMixin],
         data(){
             return {
                 numberPostOnQuery: 8,

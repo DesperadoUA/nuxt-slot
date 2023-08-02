@@ -1,10 +1,10 @@
 <template>
   <main>
-    <app_banner />
-    <app_h1 :value="data.body.h1" />
-    <app_casino_loop :posts="data.body.casino" />
-    <app_content :value="data.body.content" />
-    <app_blog_card :posts="data.body.blog" />
+      <app_banner></app_banner>
+      <app_h1 :value="data.body.h1"></app_h1>
+      <app_casino_loop :posts="data.body.casino"></app_casino_loop>
+      <app_content :value="data.body.content"></app_content>
+      <app_blog_card :posts="data.body.blog"></app_blog_card>
   </main>
 </template>
 
@@ -17,23 +17,22 @@
     import app_blog_card from '~/components/blog_card/app_blog_card'
     import config from '~/config/index.js'
 export default {
-    name: "main-page",
+    name: "bonuses",
     data: () => {
         return {
-            data: {
-            },
+            data: {}
         }
     },
     components: {app_h1, app_content, app_casino_loop, app_banner, app_blog_card},
     async asyncData({store, route}) {
         const request = {
             type: 'page',
-            url: '/'
+            url: 'bonuses'
         }
         const response = await DAL_Page.getData(request)
         const body = response.data  
         const data = body
-        data.body.currentUrl = config.BASE_URL
+        data.body.currentUrl = config.BASE_URL + route.path
         return {data}
     },
     head() {
@@ -100,7 +99,7 @@ export default {
                     name: 'robots',
                     content: this.data.body.meta.robots
                 },
-               // og //
+                   // og //
                 {
                     hid: 'og:locale',
                     property: 'og:locale',
@@ -174,13 +173,12 @@ export default {
                     content: this.data.body.currentUrl,
                 },
                 // end twitter //
-
             ],
             link: [
                 { rel: 'canonical', href: this.data.body.currentUrl}
             ]
         }
-    },
+    }
 }
 </script>
 

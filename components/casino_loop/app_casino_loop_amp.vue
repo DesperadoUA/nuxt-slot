@@ -1,5 +1,5 @@
 <template>
-  <section class="content casino_table_wrapper">
+  <section class="casino_table_wrapper">
       <div class="container">
           <div class="casino_item" v-for="item in currentPosts" :key="item.id">
               <div class="casino_item_thumbnail">
@@ -45,23 +45,25 @@
               </div>
               <div class="casino_item_buttons casino_item_column ">
                   <div class="casino_item_buttons_box">
-                    <a class="btn_ref" :href="getRef(item)">Перейти</a>
-                    <NuxtLink class="btn_review" no-prefetch :to="item.permalink" >Обзор</NuxtLink>
+                    <a class="btn_ref" :href="getRef(item)">{{translates.GO_TO[config.LANG]}}</a>
+                    <NuxtLink class="btn_review" no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" >{{translates.REVIEW[config.LANG]}}</NuxtLink>
                   </div>
               </div>
           </div>  
           <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)">
-              <button class="btn_review" @click="postShowMore">Загрузить еще</button>
+              <button class="btn_review" @click="postShowMore">{{translates.DOWNLOAD_MORE[config.LANG]}}</button>
           </div>
       </div>
   </section>
 </template>
 
 <script>
+import translateMixin from '~/mixins/translate.js'
 import {getRef} from '~/utils/'
     export default {
         name: "app_casino_loop_amp",
         props: ['posts'],
+        mixins: [translateMixin],
         data(){
             return {
                 numberPostOnQuery: 20,

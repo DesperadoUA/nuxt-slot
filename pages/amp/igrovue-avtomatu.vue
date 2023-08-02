@@ -1,39 +1,47 @@
 <template>
   <main>
-    <app_banner />
-    <app_h1 :value="data.body.h1" />
-    <app_casino_loop :posts="data.body.casino" />
-    <app_content :value="data.body.content" />
-    <app_blog_card :posts="data.body.blog" />
+      <app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
+      <app_banner_amp />
+      <app_h1_amp :value="data.body.h1" />
+      <app_casino_loop_amp :posts="data.body.casino" />
+      <app_content_amp :value="data.body.amp_content" />
+      <app_blog_card_amp :posts="data.body.blog" />
+      <app_footer_amp :options="data.options" />
   </main>
 </template>
 
 <script>
     import DAL_Page from '~/DAL/static_pages'
-    import app_h1 from '~/components/h1/app-h1'
-    import app_content from '~/components/content/app-content'
-    import app_casino_loop from '~/components/casino_loop/app_casino_loop'
-    import app_banner from '~/components/banner/app_banner_main'
-    import app_blog_card from '~/components/blog_card/app_blog_card'
+    import DAL_Options from '~/DAL/options'
+    import app_h1_amp from '~/components/h1/app-h1_amp'
+    import app_content_amp from '~/components/content/app-content_amp'
+    import app_casino_loop_amp from '~/components/casino_loop/app_casino_loop_amp'
+    import app_banner_amp from '~/components/banner/app_banner_main_amp'
+    import app_blog_card_amp from '~/components/blog_card/app_blog_card_amp'
+    import app_header_amp from '~/components/header/app-header_amp'
+    import app_footer_amp from '~/components/footer/app-footer_amp'
     import config from '~/config/index.js'
 export default {
-    name: "main-page",
+    name: "igrovue-avtomatu",
+    amp: 'hybrid',
+    ampLayout: 'default.amp',
     data: () => {
         return {
-            data: {
-            },
+            data: {}
         }
     },
-    components: {app_h1, app_content, app_casino_loop, app_banner, app_blog_card},
+    components: {app_h1_amp, app_content_amp, app_casino_loop_amp, app_banner_amp, app_blog_card_amp, app_footer_amp, app_header_amp},
     async asyncData({store, route}) {
         const request = {
             type: 'page',
-            url: '/'
+            url: 'igrovue-avtomatu'
         }
         const response = await DAL_Page.getData(request)
+        const options = await DAL_Options.getOptions()
         const body = response.data  
         const data = body
-        data.body.currentUrl = config.BASE_URL
+        data.body.currentUrl = config.BASE_URL + route.path
+        data.options = options.data
         return {data}
     },
     head() {
@@ -174,13 +182,12 @@ export default {
                     content: this.data.body.currentUrl,
                 },
                 // end twitter //
-
             ],
             link: [
                 { rel: 'canonical', href: this.data.body.currentUrl}
             ]
         }
-    },
+    }
 }
 </script>
 

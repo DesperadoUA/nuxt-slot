@@ -1,16 +1,24 @@
 <template>
 <div>
-    <app_h1 :value="data.body.h1"></app_h1>
+    <app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
+    <app_banner_amp />
+    <app_h1_amp :value="data.body.h1" />
     <app_casino_loop_amp :posts="data.body.casino" />
+    <app_content_amp :value="data.body.amp_content" />
+    <app_blog_card_amp :posts="data.body.blog" />
+    <app_footer_amp :options="data.options" />
 </div>
 </template>
 <script>
-import DAL_Page from '~/DAL/static_pages'
-    import app_h1 from '~/components/h1/app-h1'
-    import app_content from '~/components/content/app-content'
+    import DAL_Page from '~/DAL/static_pages'
+    import DAL_Options from '~/DAL/options'
+    import app_banner_amp from '~/components/banner/app_banner_main_amp' 
+    import app_h1_amp from '~/components/h1/app-h1_amp'
+    import app_content_amp from '~/components/content/app-content_amp'
     import app_casino_loop_amp from '~/components/casino_loop/app_casino_loop_amp'
-    import app_banner from '~/components/banner/app_banner_main'
-    import app_blog_card from '~/components/blog_card/app_blog_card'
+    import app_blog_card_amp from '~/components/blog_card/app_blog_card_amp'
+    import app_header_amp from '~/components/header/app-header_amp'
+    import app_footer_amp from '~/components/footer/app-footer_amp'
     import config from '~/config/index'
 export default {
     name: "main-page",
@@ -22,23 +30,19 @@ export default {
             },
         }
     },
-    components: {app_h1, app_content, app_casino_loop_amp, app_banner, app_blog_card},
+    components: {app_h1_amp, app_content_amp, app_casino_loop_amp, app_blog_card_amp, app_header_amp, app_banner_amp, app_footer_amp},
     async asyncData({store, route}) {
         const request = {
             type: 'page',
             url: '/'
         }
         const response = await DAL_Page.getData(request)
+        const options = await DAL_Options.getOptions()
         const body = response.data  
         const data = body
         data.body.currentUrl = config.BASE_URL
+        data.options = options.data
         return {data}
-    },
-    async mounted() {
-        const response = await DAL_Page.getData(request)
-        const body = response.data  
-        const data = body
-        console.log('Good day', data)
     },
     head() {
         return {
