@@ -142,5 +142,9 @@ export default {
     'PUBLICATION_DATE': {
         RU: 'Дата публикации',
         UA: 'Дата публікації'
+    },
+    'CHOOSE_CASINO': {
+        RU: 'Выбрать казино',
+        UA: 'Вибрати казино'
     }
 }

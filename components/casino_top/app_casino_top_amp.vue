@@ -4,11 +4,10 @@
           <div class="casino_top_wrapper">
               <div class="casino_top_left">
                  <div class="casino_top_thumbnail">
-                     <img :src="value.thumbnail" 
-                     loading="lazy"
+                     <amp-img :src="value.thumbnail" 
                      class="casino_top_img" 
                      width="200" 
-                     height="100"/>
+                     height="100" ></amp-img>
                  </div>
                  <div class="casino_top_title">
                      {{value.title}}
@@ -28,7 +27,7 @@
                         </div>
                  </div>
                  <div class="casino_item_buttons_box casino_top_btn_wrapper">
-                    <button class="btn_ref" @click="refActivate(value.ref)" >Перейти</button>
+                    <a class="btn_ref" :href="getRef(value)" >{{translates.GO_TO[config.LANG]}}</a>
                  </div>
               </div>
               <div class="casino_top_right">
@@ -46,62 +45,62 @@
                       </div>
                   </div>
                   <div class="casino_top_currency casino_top_desc_row" v-if="value.currency.length !== 0">
-                        <div class="casino_top_desc">Принимает игроков:</div>
+                        <div class="casino_top_desc">{{translates.ACCEPTS_PLAYERS[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                             <div class="casino_top_currency_item"  
                                 v-for="(item, index) in value.currency" 
                                 :key="index"> 
-                                <img :src="item" width="30" height="30" />
+                                <amp-img :src="item" width="30" height="30" ></amp-img>
                             </div>
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.valuta !== ''">
-                        <div class="casino_top_desc">Валюты:</div>
+                        <div class="casino_top_desc">{{translates.CURRENCIES[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            {{value.valuta}}
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.relative_payments.length !== 0">
-                        <div class="casino_top_desc">Методы оплаты:</div>
+                        <div class="casino_top_desc">{{translates.PAYMENT_METHODS[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            <ul class="casino_top_list">
                                <li v-for="(item, index) in value.relative_payments" 
                                 :key="index" >
-                                <NuxtLink no-prefetch :to="item.permalink" v-html="item.title"></NuxtLink>
+                                <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" v-html="item.title"></NuxtLink>
                                 </li>
                            </ul>
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.relative_pay_out.length !== 0">
-                        <div class="casino_top_desc">Методы выплат:</div>
+                        <div class="casino_top_desc">{{translates.PAYMENT_OUT_METHODS[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            <ul class="casino_top_list ">
                                <li v-for="(item, index) in value.relative_pay_out" 
                                 :key="index" class="green" >
-                                <NuxtLink no-prefetch :to="item.permalink" v-html="item.title"></NuxtLink>
+                                <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" v-html="item.title"></NuxtLink>
                                 </li>
                            </ul>
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.min_deposit !== ''">
-                        <div class="casino_top_desc">Минимальный депозит:</div>
+                        <div class="casino_top_desc">{{translates.MINIMUM_DEPOSIT[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            {{value.min_deposit}}
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.min_payout !== ''">
-                        <div class="casino_top_desc">Минимальная выплата:</div>
+                        <div class="casino_top_desc">{{translates.MINIMUM_PAYMENT[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            {{value.min_payout}}
                         </div>
                   </div>
                   <div class="casino_top_desc_row" v-if="value.relative_vendors.length !== 0">
-                        <div class="casino_top_desc">Платформы:</div>
+                        <div class="casino_top_desc">{{translates.PLATFORMS[config.LANG]}}:</div>
                         <div class="casino_top_desc_value">
                            <ul class="casino_top_list">
                                <li v-for="(item, index) in value.relative_vendors" 
                                 :key="index" >
-                                <NuxtLink no-prefetch :to="item.permalink" v-html="item.title"></NuxtLink>
+                                <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" v-html="item.title"></NuxtLink>
                                 </li>
                            </ul>
                         </div>
@@ -113,9 +112,12 @@
 </template>
 
 <script>
-    export default {
+import {getRef} from '~/utils'
+import translateMixin from '~/mixins/translate.js'
+   export default {
         name: "app_casino_top_amp",
         props: ['value'],
+        mixins: [translateMixin],
         data(){
             return {
                 
@@ -127,14 +129,9 @@
             }
         },
         methods: {
-            refActivate(ref) {
-               if(ref.length !== 0) {
-                    const min = 0
-                    const max = ref.length - 1
-                    const random = Math.floor(Math.random() * (max - min + 1)) + min
-                    window.open(ref[random].casino_ref, '_blank')
-                } 
-            }
+            getRef(item) {
+                return getRef(item)
+            },
         }
     }
 </script>

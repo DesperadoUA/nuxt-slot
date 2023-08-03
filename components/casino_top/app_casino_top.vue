@@ -353,6 +353,9 @@ import translateMixin from '~/mixins/translate.js'
         margin-top: 25px;
     }
     @media (min-width: 320px) and (max-width: 767px) {
+        .casino_top_btn_wrapper {
+            justify-content: center;
+        }
         .casino_top_wrapper {
             flex-wrap: wrap;
         }

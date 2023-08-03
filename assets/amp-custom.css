@@ -748,6 +748,721 @@ table {
     color: var(--blue);
 }
 /* Sidebar */
+/* Casino Top */
+.casino_top_list li {
+    display: inline-block;
+    color: var(--blue);
+    padding: 3px 10px;
+    border: 1px solid var(--gray);
+    box-sizing: border-box;
+    border-radius: 7px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.casino_top_list li a {
+    text-decoration: none;
+    font-family: var(--font-bold);
+}
+.casino_top_list .green {
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+ .casino_top_list a {
+    color: var(--blue);
+}
+.casino_top_list .green a {
+    color: var(--green);
+}
+.casino_top_desc_row {
+    display: flex;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.casino_top_currency_item {
+    width: 40px;
+} 
+.casino_top_desc, .casino_top_desc_value {
+    min-width: 25%;
+    font-family: var(--font-semi);
+    font-style: normal;
+    font-size: 14px;
+    line-height: 25px;
+    text-transform: uppercase;
+    color: var(--light-black);
+}
+.casino_top_desc_value {
+    font-weight: bold;
+}
+.casino_top_desc_value {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.casino_top_currency_item img {
+    margin-right: 15px;
+}
+.casino_top_currency {
+    display: flex;
+}
+.casino_top_bonus_item_sub_title {
+    width: 100%;
+    margin-top: 10px;
+    font-family: var(--font-semi);
+    font-style: normal;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--light-black);
+    margin-bottom: 10px;
+}
+.casino_top_bonus_item_value {
+    width: 100%;
+    margin-top: 10px;
+    font-family: var(--font-bold);
+    font-style: normal;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--middle-black);
+}
+.casino_top_bonus_item_title {
+    width: 100%;
+    font-family: var(--font-semi);
+    font-style: normal;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: var(--light-black);
+    text-align: center;
+    margin-top: 15px;
+}
+.casino_top_bonuses {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.casino_top_bonus_item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 222px;
+    min-height: 112px;
+    box-sizing: border-box;
+    background: var(--white);
+    border: 1px solid var(--gray);
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgba(77, 92, 129, 0.25);
+    border-radius: 15px;
+}
+.casino_top {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    background: var(--blue-gradient);
+}
+.casino_top ul, .casino_top ol {
+    padding-left: 0px;
+}
+.casino_top_wrapper {
+    display: flex;
+}
+.casino_top_left {
+    width: 25%;
+    text-align: center;
+}
+.casino_top_right {
+    width: 75%;
+}
+.casino_top_thumbnail {
+    width: 200px;
+    height: 110px;
+    margin: 0 auto;
+}
+.casino_top_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.casino_top_title {
+    margin-top: 20px;
+    font-family: var(--font-bold);
+    font-style: normal;
+    font-size: 22px;
+    line-height: 30px;
+    color: var(--middle-black);
+}
+.casino_top_sub_title {
+    font-family: var(--font-semi);
+    font-style: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--light-black);
+    padding-bottom: 15px;
+}
+.casino_top_rating {
+    margin: 0 auto;
+}
+.btn_ref {
+    width: 180px;
+    height: 46px;
+    background: var(--green);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    font-family: var(--font-bold);
+    font-style: normal;
+    font-size: 17px;
+    line-height: 23px;
+    text-align: center;
+    color: var(--white);
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    line-height: 46px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.casino_item_ratin_value {
+    font-family: var(--font-bold);
+    font-style: normal;
+    font-size: 22px;
+    line-height: 30px;
+    color: var(--middle-black);
+}
+.casino_item_rating_full {
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    background: var(--star_full);
+}
+.casino_item_rating_empty {
+    height: 100%;
+    width: 100%;
+    background: var(--star_empty);
+}
+.casino_item_rating_container {
+    display: flex;
+    padding: 2px 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+}
+.casino_item_rating_box {
+    width: 120px;
+    height: 24px;
+    position: relative;
+}
+.casino_item_rating_wrapper {
+ margin-top: 10px;
+ width: 203px;
+ height: 35px;
+ background: #EFF3F7;
+ border-radius: 18.5px;
+}
+.casino_top_btn_wrapper {
+    margin-top: 25px;
+}
+.casino_top_currency_item img {
+    margin: 0;
+}
+.casino_top_btn_wrapper {
+    justify-content: center;
+}
+@media (min-width: 320px) and (max-width: 767px) {
+    .casino_top_wrapper {
+        flex-wrap: wrap;
+    }
+    .casino_top_left {
+        width:100%;
+    }
+    .casino_top_right {
+        width:100%;
+    }
+    .casino_top_bonuses {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .casino_top_bonus_item {
+        margin-top: 20px;
+        width: 100%;
+        height: auto;
+        padding-bottom: 15px;
+    }
+    .casino_top_desc_row {
+        flex-wrap: wrap;
+    }
+    .casino_top_desc, .casino_top_desc_value {
+        width: 100%;
+    }
+    .casino_top_currency_item {
+        margin-top: 10px;
+    }
+    .casino_top_btn_wrapper {
+        justify-content: center;
+    }
+    .casino_top_btn_wrapper .btn_ref {
+        border-radius: 10px;
+    }
+}
+/* Casino Top */
+/* Bonuses */
+.event_close {
+    width: 12px;
+   height: 6px;
+   position: absolute;
+   background: var(--faq_close);
+   top: 20px;
+   right: 15px;
+   transition: 0.7s;
+}
+.rotate_arrow {
+    transform: rotate(90deg);
+}
+ .bonus_card_ttl {
+   font-family: var(--font-bold);
+   font-style: normal;
+   font-size: 22px;
+   line-height: 30px;
+   color: var(--middle-black);
+   margin-bottom: 20px;
+ }
+ .bonus_item {
+    background: var(--white);
+    border: 1px solid var(--gray);
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgba(77, 92, 129, 0.25);
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+ }
+ .bonus_item_thumbnail {
+    position: relative;
+    width: 23%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-right:1px solid #E5E5E5;
+    box-sizing: border-box;
+    cursor: pointer;
+ }
+ .bonus_item_action {
+       width: 63%;
+       padding: 10px 35px;
+       box-sizing: border-box;
+ }
+ .bonus_item_ttl {
+     font-family: var(--font-bold);
+     font-size: 22px;
+     margin-bottom: 5px;
+ }
+ .bonus_item_time {
+      font-family: var(--font-semi);
+     font-size: 15px;
+     margin-bottom: 5px;
+ }
+ .bonus_item_author {
+     width: 14%;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-end;
+     justify-content: flex-end;
+     padding: 10px 15px;
+     box-sizing: border-box;
+     font-family: var(--font-semi);
+     font-size: 15px;
+ }
+.bonus_card_wrapper {
+    padding: 20px 0px;
+}
+.bonus_item_button {
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     box-sizing: border-box;
+     box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.25);
+     border-radius: 10px;
+     width: 250px;
+     height: 46px;
+     font-family: var(--font-semi);
+     font-size: 15px;
+     cursor: pointer;
+     position: relative;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-decoration: none;
+}
+.bonus_item_button:nth-child(1) {
+    color: var(--white);
+    background: var(--green);
+    margin-right: 15px;
+} 
+.bonus_item_button:nth-child(2) {
+    border: 1px solid var(--gray);
+}
+.bonus_item_button_wrapper {
+    padding-top: 10px;
+}
+.bonus_item_description {
+    background: var(--light-blue);
+    padding: 24px;
+    border: 1px solid #D6DEEA;
+    box-sizing: border-box;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-family: var(--font);
+    display: none;
+    width: 100%;
+}
+.show {
+    display: block;
+}
+@media (min-width: 320px) and (max-width: 767px) {
+    .bonus_item_ttl, .bonus_item_time {
+        text-align: center;
+    } 
+    .bonus_item_thumbnail, .bonus_item_action, .bonus_item_author {
+        width: 100%;
+    }
+    .bonus_item_action {
+        padding: 10px;
+    }
+    .bonus_item_button {
+        width: 48%;
+    }
+     .bonus_item_button:nth-child(1){
+         margin-right: 0px;
+     }
+     .bonus_item_button_wrapper {
+         display: flex;
+         justify-content: space-between;
+     }
+}
+/* Bonuses */
+/* How to */
+.how_to_item_wrapper {
+    padding: 20px 0px;
+}
+.how_to_item_wrapper {
+    display: flex;
+  border: 1px solid var(--blue);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background: var(--blue-gradient);
+} 
+.how_to_item_left {
+   margin: 0px;
+   padding: 0px 15px;
+   font-family: var(--font-regular);
+   width: 30%;
+}
+.how_to_item_right {
+   margin: 0px;
+   padding: 20px;
+   font-family: var(--font-regular);
+   width: 70%;
+}
+.how_to_item_right h3 {
+  text-align: left;
+}
+.how_to_item_cover {
+  border: 1px solid var(--blue);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: var(--blue-gradient);
+}
+.how_to_item_cover h2 {
+  text-align: left;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .how_to_item_left, .how_to_item_right {
+        width: 100%;
+    }
+    .how_to_item_left {
+        text-align: center;
+    }
+   .how_to_item_wrapper {
+       flex-wrap: wrap;
+   }
+ }
+/* How to */
+/* Video */
+.video-wrapper {
+    padding: 20px 0px;
+}
+/* Video */
+/* Faq */
+.faq {
+    padding: 30px 0px;
+}
+.faq_title {
+    font-family: var(--font);
+    font-size: 35px;
+    padding-bottom: 20px;
+    color: var(--middle-black);
+}
+.faq_question {
+    background: var(--blue-gradient);
+    border: 1px solid var(--blue);
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 5px 75px 5px 25px;
+    margin-top: 15px;
+    font-family: var(--font);
+    font-style: normal;
+    font-weight: bold;
+    line-height: 36px;
+    color: var(--middle-black);
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+}
+.faq_answer {
+    color: var(--black);
+    font-family: var(--font);
+    box-sizing: border-box;
+    font: inherit;
+    line-height: 22px;
+    vertical-align: baseline;
+    padding: 45px 65px;
+    display: none;
+    opacity: 0;
+    transition: 0.7s;
+}
+.faq_answer span {
+    font-family: var(--font);
+}
+.faq_close {
+    width: 12px;
+    height: 6px;
+    position: absolute;
+    background: var(--faq_close);
+    top: 20px;
+    right: 25px;
+    transition: 0.7s;
+}
+.fadeIn {
+    display: block;
+    opacity: 1;
+}
+.faq_active .faq_close {
+    transform: rotate(180deg);
+}
+@media (min-width: 320px) and (max-width: 767px) {
+    .faq_answer {
+    padding: 15px;
+}
+}
+/* Faq */
+/* Reviews */
+.casino_item_ratin_value {
+    font-family: var(--font);
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+    color: var(--middle-black);
+}
+.casino_item_rating_full {
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    background: var(--star_full);
+}
+.casino_item_rating_empty {
+    height: 100%;
+    width: 100%;
+    background: var(--star_empty);
+}
+.casino_item_rating_container {
+    display: flex;
+    padding: 2px 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+}
+.casino_item_rating_box {
+    width: 120px;
+    height: 24px;
+    position: relative;
+}
+    .review_btn_show {
+        font-family: var(--font);
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 175%;
+        color: var(--blue);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .reviews_show_more {
+        text-align: center;
+        padding: 20px 0px;
+        width: 100%;
+    }
+    .review_item_desc {
+      font-family: var(--font);
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 175%;
+      color: var(--middle-black);
+    }
+   .review_item_rating {
+       display: flex;
+       width: 168px;
+       justify-content: space-between;
+       margin-bottom: 10px;
+   }
+   .revie_item_box_value {
+       transform:translateY(-2px);
+   }
+   .review_item_title {
+       display: flex;
+       justify-content: space-between;
+       margin-bottom: 15px;
+   }
+   .review_item_title span:nth-child(1) {
+       font-family: var(--font);
+       font-style: normal;
+       font-weight: bold;
+       font-size: 18px;
+       color: var(--middle-black);
+   }
+   .review_item_title span:nth-child(2) {
+       font-family: var(--font);
+       font-weight: normal;
+       font-size: 12px;
+       color: var(--middle-black);
+   }
+   .review_item {
+       background: var(--white-gradient);
+       border: 1px solid var(--gray);
+       box-sizing: border-box;
+       box-shadow: 0px 2px 10px rgba(77, 92, 129, 0.25);
+       border-radius: 15px;
+       padding: 30px;
+       margin-top: 10px;
+       margin-bottom: 10px;
+   }
+   .reviews {
+       padding: 25px 0px;
+   }
+   .reviews_title {
+       font-family: var(--font);
+       font-style: normal;
+       font-weight: bold;
+       font-size: 18px;
+       line-height: 25px;
+       color: var(--middle-black);
+       margin-bottom: 25px;
+   }
+/* Reviews */
+/* slick_button */
+
+.slick_button_part_left {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 2;
+    display: block;
+}
+.slick_button_part_right {
+    display: block;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top:0px;
+    right:0px;
+    z-index: 2;
+}
+    .slick_button {
+        height: 70px;
+        z-index: 10;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to right, var(--blue) 50%, var(--green) 50%);
+        cursor: pointer;
+    }
+    .slick_button a, .slick_button {
+        color: var(--white);
+        text-decoration: none;
+        font-family: var(--font);
+        font-weight: bold;
+    }
+    .slick_button_container {
+       display: flex;
+       align-items: center;
+       height: 100%;
+    }
+    .slick_button_left {
+        width: 50%;
+    }
+    .slick_button_right {
+        width: 50%;
+        text-align: right;
+        cursor: pointer;
+    }
+    .left_arrow {
+        margin-right: 10px;
+    }
+    .right_arrow {
+        margin-left: 10px;
+        transform: rotate(180deg);
+    }
+    @media (min-width: 320px) and (max-width: 767px) {
+        .slick_button_part_left {
+            width: 100%;
+            height: 50%;
+        }
+        .slick_button_part_right {
+            width: 100%;
+            height: 50%;
+            top: 50%;
+        }
+        .slick_button {
+            box-sizing: border-box;
+            background: transparent;
+            height: 80px;
+        }
+        .slick_button_container {
+            flex-wrap: wrap;
+            max-width: 100%;
+        }
+        .slick_button_left, .slick_button_right {
+            width: 100%;
+            text-align: center;
+        }
+        .slick_button_left {
+            background: var(--blue);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slick_button_right {
+            background: var(--green);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+/* slick_button */
 /* Footer */
 .footer_menu {
     padding-top: 10px;
