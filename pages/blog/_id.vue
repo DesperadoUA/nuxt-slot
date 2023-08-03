@@ -1,22 +1,22 @@
 <template>
   <main>
-    <app_banner :value="data.body.h1"></app_banner>
-    <app_breadcrumb  :value="data.body.title"></app_breadcrumb>
+    <app_banner :value="data.body.h1" />
+    <app_breadcrumb  :value="data.body.title" />
     <section>
         <div class="container blog_section">
             <div class="blog_section_left">
-                <app_content :value="data.body.content"></app_content>
+                <app_content :value="data.body.content" />
             </div>
             <div class="blog_section_right">
                 <app_sidebar :author="data.body.author"
                              :date="data.body.date"
-                ></app_sidebar>
+                />
             </div>
         </div>
     </section>
     <app_reviews     :value="data.body.reviews" 
-                     :title="data.body.title"></app_reviews>
-    <app_form_review :id="data.body.id"></app_form_review> 
+                     :title="data.body.title" />
+    <app_form_review :id="data.body.id" /> 
   </main>
 </template>
 
@@ -28,17 +28,20 @@
     import app_reviews from '~/components/reviews/app_reviews'
     import app_form_review from '~/components/form_review/app_form_review'
     import app_sidebar from '~/components/sidebar/app_sidebar'
-    import config from '~/config/index.js'
-    import { getErrorPageObj } from '~/utils/index.js'
+    import config from '~/config'
+    import { getErrorPageObj } from '~/utils'
+    import headMixin from '~/mixins/head.js'
+    import helper from '~/helpers'
     export default {
         name: "app_single_blog",
+        mixins: [headMixin],
         components: {app_banner, app_content, app_breadcrumb, app_reviews, app_form_review, app_sidebar},
         data: () => {
             return {
                data: {},
             }
         },
-        async asyncData({route, error}) {
+        async asyncData({route, error, store}) {
             const request = {
                 type: 'blog',
                 url: route.params.id
@@ -52,153 +55,9 @@
                const data = body
                data.body = data.body
                data.body.currentUrl = config.BASE_URL + route.path
+               data.body.headerLinks = helper.hreflang(data.body.hreflang)
+               store.dispatch('options/setHrefLang', data.body.headerLinks)
                return {data}
-           }
-        },
-
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                 meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: this.data.body.meta_description
-                },
-                {
-                    hid: 'classification',
-                    name: 'classification',
-                    content: this.data.body.meta.classification
-                },
-                {
-                    hid: 'distribution',
-                    name: 'distribution',
-                    content: this.data.body.meta.distribution
-                },
-                {
-                    hid: 'author',
-                    name: 'author',
-                    content: this.data.body.meta.author
-                },
-                {
-                    hid: 'creator',
-                    name: 'creator',
-                    content: this.data.body.meta.creator
-                },
-                {
-                    hid: 'copyright',
-                    name: 'copyright',
-                    content: this.data.body.meta.copyright
-                },
-                {
-                    hid: 'publisher',
-                    name: 'publisher',
-                    content: this.data.body.meta.publisher
-                },
-                {
-                    hid: 'geo.placename',
-                    name: 'geo.placename',
-                    content: this.data.body.meta.placename
-                },
-                {
-                    hid: 'geo.position',
-                    name: 'geo.position',
-                    content: this.data.body.meta.position
-                },
-                {
-                    hid: 'geo.region',
-                    name: 'geo.region',
-                    content: this.data.body.meta.region
-                },
-                {
-                    hid: 'ICBM',
-                    name: 'ICBM',
-                    content: this.data.body.meta.ICBM
-                },
-                {
-                    hid: 'robots',
-                    name: 'robots',
-                    content: this.data.body.meta.robots
-                },
-                // og //
-                {
-                    hid: 'og:locale',
-                    property: 'og:locale',
-                    content: 'ru-UA'
-                },
-                {
-                    hid: 'og:type',
-                    property: 'og:type',
-                    content: 'article'
-                },
-                {
-                    hid: 'og:title',
-                    property: 'og:title',
-                    content: this.data.body.meta_title
-                },
-                {
-                    hid: 'og:description',
-                    property: 'og:description',
-                    content: this.data.body.meta_description
-                },
-                {
-                    hid: 'og:url',
-                    property: 'og:url',
-                    content: this.data.body.currentUrl,
-                },
-                {
-                    hid: 'og:article:section',
-                    property: 'og:article:section',
-                    content: this.data.body.h1,
-                },
-                {
-                    hid: 'og:article:published_time',
-                    property: 'og:article:published_time',
-                    content: this.data.body.date,
-                },
-                {
-                    hid: 'og:article:modified_time',
-                    property: 'og:article:modified_time',
-                    content: this.data.body.date_modified,
-                },
-                {
-                    hid: 'og:image',
-                    property: 'og:image',
-                    content: this.data.body.thumbnail,
-                },
-                // end og //
-                // twitter //
-                {
-                    hid: 'twitter:card',
-                    name: 'twitter:card',
-                    content: 'summary'
-                },
-                {
-                    hid: 'twitter:title',
-                    name: 'twitter:title',
-                    content: this.data.body.meta_title,
-                },
-                {
-                    hid: 'twitter:description',
-                    name: 'twitter:description',
-                    content: this.data.body.meta_description,
-                },
-                {
-                    hid: 'twitter:image',
-                    name: 'twitter:image',
-                    content: this.data.body.thumbnail,
-                },
-                {
-                    hid: 'twitter:url',
-                    name: 'twitter:url',
-                    content: this.data.body.currentUrl,
-                },
-
-                // end twitter //
-                ],
-                link: [
-                   { rel: 'canonical', href: this.data.body.currentUrl}
-                ]
            }
         }
     }

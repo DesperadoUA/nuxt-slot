@@ -1,39 +1,38 @@
 <template>
   <section class="form_review">
       <div class="container">
-          <div class="reviews_title">Оставить свой отзыв</div>
-          <form class="reviews_form_wrapper">
+          <div class="reviews_title">{{translates.LEAVE_YOUR_REVIEW[config.LANG]}}</div>
+          <form class="reviews_form_wrapper" method="post" action-xhr="https://example.com/subscribe">
               <div class="reviews_form_wrapper_input">
                   <input type="text" 
                          class="form_input" 
                          v-model="name" 
-                         placeholder="Имя"
+                         :placeholder="translates.NAME[config.LANG]"
                          >
                   <input type="text" 
                          class="form_input" 
                          v-model="email"
-                         placeholder="Ваш email"
+                         :placeholder="translates.OUR_EMAIL[config.LANG]"
                          > 
               </div>
               <textarea class="form_textarea" 
-                             v-model="text"
-                             placeholder="Напишите текст вашего отзыва"
-                             ></textarea>     
+                        v-model="text"
+                        :placeholder="translates.WRITE_TEXT_YOUR_REVIEW[config.LANG]"
+              ></textarea>     
               <div class="form_review_rating">
-                  <img v-for="item in 10" 
+                  <amp-img v-for="item in 10" 
                        :key="item" 
                        :src="(item) <= currentRating ? '/img/Star.png': '/img/Star_empty.png'" 
                        @click="chengRating(item)" 
                        class="rating_stars"
                        width="16" height="16"
-                       loading="lazy"
-                       />
+                       ></amp-img>
                        <span class="form_rating_value"><b>{{currentRating}}</b>/10</span>
               </div>   
               <div class="form_review_submit">
                   <button class="form_review_send"
                           v-on:click.stop.prevent="sendReview"
-                  >Отправить</button>
+                  >{{translates.SEND[config.LANG]}}</button>
               </div>
               <div class="error" v-if="msg.length !== 0">
                     <p v-for="(item, index) in msg" :key="index">{{item}}</p>
@@ -44,10 +43,12 @@
 </template>
 
 <script>
-    import DAL_Reviews from '../../DAL/review'
+    import DAL_Reviews from '~/DAL/review'
+    import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_form_review",
         props: ['id'],
+        mixins: [translateMixin],
         data(){
             return {
                name: '',

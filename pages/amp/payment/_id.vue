@@ -1,44 +1,71 @@
 <template>
-  <main>
-      <app_banner></app_banner>
-      <app_h1 :value="data.body.h1"></app_h1>
-      <app_blog_card :posts="data.body.blog"></app_blog_card>
-      <app_content :value="data.body.content"></app_content>
-  </main>
+<div>
+    <app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
+    <main>
+        <app_banner_amp :value="data.body.h1" />
+        <app_breadcrumb_amp :value="data.body.title" />
+        <app_top_content_amp :value="data.body" />   
+        <app_casino_loop_amp :posts="data.body.casino" />   
+        <app_faq_amp :value="data.body.faq" :title="data.body.faq_title" />          
+    </main>
+    <app_footer_amp :options="data.options" />
+</div>
 </template>
+
 <script>
     import DAL_Page from '~/DAL/static_pages'
-    import app_h1 from '~/components/h1/app-h1'
-    import app_content from '~/components/content/app-content'
-    import app_banner from '~/components/banner/app_banner_main'
-    import app_blog_card from '~/components/blog_card/app_blog_card'
-    import config from '~/config'
-    import helper from '~/helpers'
-export default {
-    name: "blog",
-    data: () => {
-        return {
-            data: {}
-        }
-    },
-    components: {app_h1, app_content, app_banner, app_blog_card},
-    async asyncData({store, route}) {
-        const request = {
-            type: 'page',
-            url: 'blog'
-        }
-        const response = await DAL_Page.getData(request)
-        const body = response.data  
-        const data = body
-        data.body.currentUrl = config.BASE_URL + route.path
-        data.body.headerLinks = helper.hreflang(data.body.hreflang)
-        store.dispatch('options/setHrefLang', data.body.headerLinks)
-        return {data}
-    },
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
+    import DAL_Options from '~/DAL/options'
+    import app_banner_amp from '~/components/banner/app_banner_casino_amp'
+    import app_breadcrumb_amp from '~/components/breadcrumb/app_breadcrumb_amp'
+    import app_casino_loop_amp from '~/components/casino_loop/app_casino_loop_amp'
+    import app_top_content_amp from '~/components/top_content/app_top_content_amp'
+    import app_faq_amp from '~/components/faq/app_faq_amp'
+    import app_header_amp from '~/components/header/app-header_amp'
+    import app_footer_amp from '~/components/footer/app-footer_amp'
+    import config from '~/config/index.js'
+    import { getErrorPageObj } from '~/utils/index.js'
+    export default {
+        name: "app_single_payment_amp",
+        amp: 'hybrid',
+        ampLayout: 'default.amp',
+        components: {app_banner_amp, app_breadcrumb_amp, app_casino_loop_amp, app_faq_amp, app_top_content_amp, app_header_amp, app_footer_amp},
+        data: () => {
+            return {
+               data: {},
+            }
+        },
+        async asyncData({route, req, error}) {
+             const request = {
+                type: 'payment',
+                url: route.params.id
+            }
+           const response = await DAL_Page.getData(request)
+           if(response.data.status === '404') {
+               error(getErrorPageObj())
+           } 
+           else { 
+               const options = await DAL_Options.getOptions()
+               const body = response.data  
+               const data = body
+               data.body = data.body
+               const faq = []
+               data.body.faq.forEach(element => {
+                  faq.push({
+                    status: 'close',
+                    answer: element.answer,
+                    question: element.question
+                 })
+               });
+              data.body.faq = faq
+              data.body.currentUrl = config.BASE_URL + route.path
+              data.options = options.data
+              return {data}
+           }
+        },
+        head() {
+            return {
+                title: this.data.body.meta_title,
+                meta: [
                 {
                     hid: 'description',
                     name: 'description',
@@ -99,7 +126,7 @@ export default {
                     name: 'robots',
                     content: this.data.body.meta.robots
                 },
-                // og //
+                                                               // og //
                 {
                     hid: 'og:locale',
                     property: 'og:locale',
@@ -108,7 +135,7 @@ export default {
                 {
                     hid: 'og:type',
                     property: 'og:type',
-                    content: 'website'
+                    content: 'article'
                 },
                 {
                     hid: 'og:title',
@@ -173,16 +200,16 @@ export default {
                     content: this.data.body.currentUrl,
                 },
                 // end twitter //
+
             ],
              link: [
-                   { rel: 'canonical', href: this.data.body.currentUrl},
-                   ...this.data.body.headerLinks
+                   { rel: 'canonical', href: this.data.body.currentUrl}
                 ]
         }
     }
-}
+    }
 </script>
 
-<style>
+<style scoped>
 
 </style>

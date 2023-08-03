@@ -1,7 +1,7 @@
 <template>
   <footer v-if="changeOptions !== null">
     <nav class="footer_menu" v-if="options.footer_menu.length !== 0">
-      <div class="container">
+      <div class="container footer_menu_container">
         <ul>
           <li class="footer_menu_item" 
               v-for="(item, index) in options.footer_menu" 
@@ -11,6 +11,7 @@
                       </NuxtLink>
           </li>
         </ul>
+        <app_lang_selector :posts="changeHrefLang" />
       </div>
     </nav>
     <div class="footer_partners">
@@ -64,8 +65,12 @@
 </template>
 
 <script>
+import app_lang_selector from '~/components/lang_selector/app_lang_selector'
+import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app-footer",
+        mixins: [translateMixin],
+        components: {app_lang_selector},
         data(){
             return {
                options: null
@@ -75,6 +80,10 @@
           changeOptions(){
             this.options = this.$store.getters['options/getOptions']
             return this.options
+          },
+          changeHrefLang(){
+            this.hrefLang = this.$store.getters['options/getHrefLang']
+            return this.hrefLang
           }
         }
     }
@@ -141,6 +150,10 @@
       margin-left: 5px;
       margin-right: 5px;
     }
+    .footer_menu_container {
+      display: flex;
+      justify-content: space-between;
+    }
     @media (min-width: 320px) and (max-width: 767px) {
       .security_logo {
         margin-top: 10px;
@@ -160,5 +173,13 @@
       .footer_text {
         text-align: center;
       }
+      .footer_menu_container {
+        flex-wrap: wrap;
+      }
+      .lang_selector {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      } 
     }
 </style>

@@ -1,44 +1,73 @@
 <template>
-  <main>
-      <app_banner></app_banner>
-      <app_h1 :value="data.body.h1"></app_h1>
-      <app_blog_card :posts="data.body.blog"></app_blog_card>
-      <app_content :value="data.body.content"></app_content>
-  </main>
+    <div>
+        <app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
+        <main>
+            <app_banner_amp :value="data.body.h1" />
+            <app_breadcrumb_amp  :value="data.body.title" />
+            <section>
+                <div class="container blog_section">
+                    <div class="blog_section_left">
+                        <app_content_amp :value="data.body.amp_content" />
+                    </div>
+                    <div class="blog_section_right">
+                        <app_sidebar_amp :author="data.body.author" :date="data.body.date" />
+                    </div>
+                </div>
+            </section>
+            <app_reviews_amp :value="data.body.reviews" :title="data.body.title" />
+            <app_form_review_amp :id="data.body.id" /> 
+        </main>
+        <app_footer_amp :options="data.options" />
+    </div>
 </template>
+
 <script>
     import DAL_Page from '~/DAL/static_pages'
-    import app_h1 from '~/components/h1/app-h1'
-    import app_content from '~/components/content/app-content'
-    import app_banner from '~/components/banner/app_banner_main'
-    import app_blog_card from '~/components/blog_card/app_blog_card'
-    import config from '~/config'
-    import helper from '~/helpers'
-export default {
-    name: "blog",
-    data: () => {
-        return {
-            data: {}
-        }
-    },
-    components: {app_h1, app_content, app_banner, app_blog_card},
-    async asyncData({store, route}) {
-        const request = {
-            type: 'page',
-            url: 'blog'
-        }
-        const response = await DAL_Page.getData(request)
-        const body = response.data  
-        const data = body
-        data.body.currentUrl = config.BASE_URL + route.path
-        data.body.headerLinks = helper.hreflang(data.body.hreflang)
-        store.dispatch('options/setHrefLang', data.body.headerLinks)
-        return {data}
-    },
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
+    import DAL_Options from '~/DAL/options'
+    import app_banner_amp from '~/components/banner/app_banner_casino_amp'
+    import app_content_amp from '~/components/content/app-content_amp'
+    import app_breadcrumb_amp from '~/components/breadcrumb/app_breadcrumb_amp'
+    import app_reviews_amp from '~/components/reviews/app_reviews_amp'
+    import app_form_review_amp from '~/components/form_review/app_form_review_amp'
+    import app_sidebar_amp from '~/components/sidebar/app_sidebar_amp'
+    import app_header_amp from '~/components/header/app-header_amp'
+    import app_footer_amp from '~/components/footer/app-footer_amp'
+    import config from '~/config/index.js'
+    import { getErrorPageObj } from '~/utils/index.js'
+    export default {
+        name: "app_single_blog_amp",
+        amp: 'hybrid',
+        ampLayout: 'default.amp',
+        components: {app_banner_amp, app_content_amp, app_breadcrumb_amp, app_reviews_amp, app_form_review_amp, app_sidebar_amp, app_footer_amp, app_header_amp},
+        data: () => {
+            return {
+               data: {},
+            }
+        },
+        async asyncData({route, error}) {
+            const request = {
+                type: 'blog',
+                url: route.params.id
+            }
+           const response = await DAL_Page.getData(request)
+           if(response.data.status === '404') {
+               error(getErrorPageObj())
+           } 
+           else {
+               const options = await DAL_Options.getOptions()
+               const body = response.data  
+               const data = body
+               data.body = data.body
+               data.body.currentUrl = config.BASE_URL + route.path
+               data.options = options.data
+               return {data}
+           }
+        },
+
+        head() {
+            return {
+                title: this.data.body.meta_title,
+                 meta: [
                 {
                     hid: 'description',
                     name: 'description',
@@ -94,7 +123,7 @@ export default {
                     name: 'ICBM',
                     content: this.data.body.meta.ICBM
                 },
-                 {
+                {
                     hid: 'robots',
                     name: 'robots',
                     content: this.data.body.meta.robots
@@ -108,7 +137,7 @@ export default {
                 {
                     hid: 'og:type',
                     property: 'og:type',
-                    content: 'website'
+                    content: 'article'
                 },
                 {
                     hid: 'og:title',
@@ -172,17 +201,37 @@ export default {
                     name: 'twitter:url',
                     content: this.data.body.currentUrl,
                 },
+
                 // end twitter //
-            ],
-             link: [
-                   { rel: 'canonical', href: this.data.body.currentUrl},
-                   ...this.data.body.headerLinks
+                ],
+                link: [
+                   { rel: 'canonical', href: this.data.body.currentUrl}
                 ]
+           }
         }
     }
-}
 </script>
 
 <style>
-
+   .blog_section {
+       display: flex;
+   }
+   .blog_section .container {
+       width: 100%;
+       max-width: 100%;
+   }
+   .blog_section_left {
+       width:918px;
+   }
+   .blog_section_right {
+       flex-grow: 1;
+   }
+   @media (min-width: 320px) and (max-width: 767px) {
+       .blog_section {
+           flex-wrap: wrap;
+       } 
+       .blog_section_left, .blog_section_right {
+           width: 100%;
+       }
+   }
 </style>

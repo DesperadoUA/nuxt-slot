@@ -1,5 +1,5 @@
-import TRANSLATE from '~/translate/index.js'
-import config from '~/config/index.js'
+import TRANSLATE from '~/translate'
+import config from '~/config'
 export default {
     data: () => {
         return {

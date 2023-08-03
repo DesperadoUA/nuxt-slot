@@ -31,12 +31,7 @@ import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_breadcrumb",
         props: ['value'],
-        mixins: [translateMixin],
-        data(){
-            return {
-                
-            }
-        },
+        mixins: [translateMixin]
     }
 </script>
 <style> 
