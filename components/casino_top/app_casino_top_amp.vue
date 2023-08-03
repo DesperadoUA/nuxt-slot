@@ -112,12 +112,12 @@
 </template>
 
 <script>
-import {getRef} from '~/utils'
 import translateMixin from '~/mixins/translate.js'
+import getRef from '~/mixins/getRef.js'
    export default {
         name: "app_casino_top_amp",
         props: ['value'],
-        mixins: [translateMixin],
+        mixins: [translateMixin, getRef],
         data(){
             return {
                 
@@ -127,11 +127,6 @@ import translateMixin from '~/mixins/translate.js'
             rating(item){
                 return Math.trunc(item/10)
             }
-        },
-        methods: {
-            getRef(item) {
-                return getRef(item)
-            },
         }
     }
 </script>

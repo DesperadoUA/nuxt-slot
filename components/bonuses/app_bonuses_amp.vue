@@ -55,16 +55,13 @@
 </template>
 
 <script>
-import {getRef} from '~/utils/'
 import translateMixin from '~/mixins/translate.js'
+import getRef from '~/mixins/getRef.js'
     export default {
         name: "app_bonuses_loop_amp",
-         mixins: [translateMixin],
+        mixins: [translateMixin, getRef],
         props: ['value'],
         methods: {
-            getRef(item) {
-                return getRef(item)
-            },
             activate(item) {
                 item.status === 'close' ? item.status = 'open' : item.status = 'close'
             }

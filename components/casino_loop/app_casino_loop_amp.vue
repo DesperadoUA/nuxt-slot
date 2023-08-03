@@ -59,11 +59,11 @@
 
 <script>
 import translateMixin from '~/mixins/translate.js'
-import {getRef} from '~/utils/'
+import getRef from '~/mixins/getRef.js'
     export default {
         name: "app_casino_loop_amp",
         props: ['posts'],
-        mixins: [translateMixin],
+        mixins: [translateMixin, getRef],
         data(){
             return {
                 numberPostOnQuery: 20,
@@ -81,9 +81,6 @@ import {getRef} from '~/utils/'
             }
         },
         methods: {
-            getRef(item) {
-                return getRef(item)
-            },
             postShowMore(){
                 this.postCurrentPage += 1
             }

@@ -16,16 +16,11 @@
 </template>
 
 <script>
-import {getRef} from '~/utils'
 import translateMixin from '~/mixins/translate.js'
+import getRef from '~/mixins/getRef.js'
     export default {
         name: "app_slick_button_amp",
         props:['referal'],
-        mixins: [translateMixin],
-        methods: {
-            getRef(item) {
-                return getRef(item);
-            }
-        }
+        mixins: [translateMixin, getRef]
     }
 </script>
