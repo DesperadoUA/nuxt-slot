@@ -8,5 +8,6 @@ export default {
     LANG_TITLES: {
         uk: 'Українська',
         ru: 'Русский'
-    }
+    },
+    HTML_ATTRS: 'ru'
 }
