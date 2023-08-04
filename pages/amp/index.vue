@@ -1,5 +1,6 @@
 <template>
 <div>
+    <app_test_amp />
     <app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
     <app_banner_amp />
     <app_h1_amp :value="data.body.h1" />
@@ -19,6 +20,7 @@
     import app_blog_card_amp from '~/components/blog_card/app_blog_card_amp'
     import app_header_amp from '~/components/header/app-header_amp'
     import app_footer_amp from '~/components/footer/app-footer_amp'
+    import app_test_amp from '~/components/test/test'
     import config from '~/config/index'
 export default {
     name: "main-page",
@@ -30,7 +32,7 @@ export default {
             },
         }
     },
-    components: {app_h1_amp, app_content_amp, app_casino_loop_amp, app_blog_card_amp, app_header_amp, app_banner_amp, app_footer_amp},
+    components: {app_h1_amp, app_content_amp, app_casino_loop_amp, app_blog_card_amp, app_header_amp, app_banner_amp, app_footer_amp, app_test_amp},
     async asyncData({store, route}) {
         const request = {
             type: 'page',
