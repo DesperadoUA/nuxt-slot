@@ -40,7 +40,7 @@ export default {
         data.body.headerLinks = helper.hreflang(data.body.hreflang)
         store.dispatch('options/setHrefLang', data.body.headerLinks)
         return {data}
-    }
+    },
 }
 </script>
 

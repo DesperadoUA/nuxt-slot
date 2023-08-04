@@ -1,6 +1,7 @@
 <template>
+<amp-script layout="container" :src="`${config.BASE_URL}/amp-blog.js`" class="sample">
   <section class="blog_card_wrapper">
-      <div class="container">
+      <div class="container jsBlogContainer">
          <div class="blog_card_item" v-for="item in currentPosts" :key="item.id">
              <div class="blog_card_item_left">
                  <div class="blog_card_item_img_wrapper">
@@ -29,13 +30,13 @@
                  </div>
              </div>
          </div>
-         <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)" >
-           <button class="btn_review" @click="postShowMore">{{translates.DOWNLOAD_MORE[config.LANG]}}</button>
-         </div>
+      </div>
+      <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)" >
+        <button class="btn_review jsBlogLoadMore">{{translates.DOWNLOAD_MORE[config.LANG]}}</button>
       </div>
   </section>
+</amp-script>
 </template>
-
 <script>
 import translateMixin from '~/mixins/translate.js'
     export default {

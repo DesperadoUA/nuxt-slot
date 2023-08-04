@@ -16,7 +16,7 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       //{ rel: 'script', src: 'https://images.dmca.com/Badges/DMCABadgeHelper.min.js' }
-    ]
+    ],
   },
   serverMiddleware: [
     '~/serverMiddleware/redirects',
@@ -73,6 +73,6 @@ export default {
     }
   },
   amp: {
-    css: '~/assets/amp-custom.css'
+    css: '~/assets/amp-custom.css',
   }
 }

@@ -257,7 +257,6 @@ table {
 }
 /* H1 */
 /* Casino Table */
-
 .casino_item_licensed {
     position: absolute;
     right: 0px;
@@ -285,7 +284,6 @@ table {
     margin-bottom: 15px;
     cursor: pointer;
 }
-
 .casino_item_ratin_value {
     font-family: var(--font-bold);
     font-style: normal;
@@ -331,7 +329,6 @@ table {
      margin-bottom: 10px;
      display: flex;
  }
-
  .casino_item_thumbnail {
      position: relative;
      width: 23%;
@@ -342,7 +339,7 @@ table {
  }
  .casino_item_marker {
      position:absolute;
-     top:-17px;
+     top:3px;
      left:3px;
  }
  .casino_item_rating {
@@ -506,6 +503,12 @@ table {
     }
  }
 /* Casino Table */
+/* Single Blog */
+/* Single Blog */
+.blog_section_left .container {
+    width: 100%;
+    max-width: 100%;
+}
 /* Blog cards */
 .casino_table_btn_wrapper {
     display: flex;
@@ -625,6 +628,9 @@ table {
 .breadcrumb_item a {
     color: var(--blue);
     text-decoration: none;
+}
+.breadcrumb_list {
+    padding-left: 0px;
 }
 @media (min-width: 320px) and (max-width: 767px) {
     .breadcrumb_list {
@@ -1086,7 +1092,7 @@ table {
      box-sizing: border-box;
      box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.25);
      border-radius: 10px;
-     width: 250px;
+     width: 100%;
      height: 46px;
      font-family: var(--font-semi);
      font-size: 15px;
@@ -1116,12 +1122,37 @@ table {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     font-family: var(--font);
-    display: none;
     width: 100%;
 }
 .show {
     display: block;
 }
+.bonus_item_button_description {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    width: 100%;
+    height: 46px;
+    font-family: var(--font-semi);
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 46px;
+    padding-right: 0px;
+}
+.bonus_item_description  {
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 0px 10px;
+ }
+ .bonus_accordion {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
 @media (min-width: 320px) and (max-width: 767px) {
     .bonus_item_ttl, .bonus_item_time {
         text-align: center;
@@ -1133,14 +1164,21 @@ table {
         padding: 10px;
     }
     .bonus_item_button {
-        width: 48%;
+        width: 100%;
     }
      .bonus_item_button:nth-child(1){
          margin-right: 0px;
      }
+     .bonus_section_description {
+        width: 100%;
+     }
      .bonus_item_button_wrapper {
          display: flex;
+         flex-wrap: wrap;
          justify-content: space-between;
+     }
+     .faq_question {
+        border: 1px solid blue;
      }
 }
 /* Bonuses */

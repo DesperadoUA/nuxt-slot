@@ -18,20 +18,20 @@
                   </div>
                   <div class="bonus_item_button_wrapper">
                       <a class="bonus_item_button" :href="getRef(item)">{{translates.GET[config.LANG]}}</a>
-                      <button 
-                      class="bonus_item_button"
-                        @click="activate(item)"  
-                      >
-                          {{translates.DESCRIPTION[config.LANG]}}
-                          <span :class="{event_close: true, rotate_arrow: item.status === 'open'}" ></span>
-                      </button>
+                      <amp-accordion :id="`bonus${i}`" disable-session-states class="bonus_accordion">
+                        <section class="bonus_section_description">
+                            <header class="bonus_item_button_description">
+                                {{translates.DESCRIPTION[config.LANG]}}
+                            </header>
+                            <div class="bonus_item_description">
+                              <p v-html="item.description" itemprop="description"></p>
+                            </div>
+                        </section>
+                      </amp-accordion>
                   </div>
               </div>
               <div class="bonus_item_author" itemprop="performer" itemscope itemtype="http://schema.org/Person">
                   <span itemprop="name">{{translates.AUTHOR[config.LANG]}}: {{item.name}}</span>
-              </div>
-              <div :class="{bonus_item_description: true, show: item.status === 'open'}">
-                  <p v-html="item.description" itemprop="description"></p>
               </div>
               <div style="display:none" itemprop="location" itemscope itemtype="http://schema.org/VirtualLocation" >
 	              Сайт: <span itemprop="url">{{item.site}}</span>

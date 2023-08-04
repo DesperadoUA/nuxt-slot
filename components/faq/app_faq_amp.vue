@@ -10,7 +10,6 @@
                 >
                 <header class='faq_question'>
                     <span itemprop='name'>{{item.question}}</span>
-                    <span class='faq_close'></span>
                 </header>
                 <div class='faq_answer' itemscope itemprop='acceptedAnswer' itemtype='https://schema.org/Answer' >
                     <span  itemprop='text' v-html="item.answer"></span>
@@ -24,15 +23,6 @@
 <script>
     export default {
         name: "app_faq_amp",
-        props: ['value', 'title'],
-        data(){
-            return {
-            }
-        },
-        methods: {
-            activate(item) {
-                item.status === 'close' ? item.status = 'open' : item.status = 'close'
-            }
-        }
+        props: ['value', 'title']
     }
 </script>
