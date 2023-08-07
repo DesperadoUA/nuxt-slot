@@ -1,7 +1,7 @@
 <template>
 <amp-script layout="container" :src="`${config.BASE_URL}/amp-blog.js`" class="sample">
   <section class="blog_card_wrapper">
-      <div class="container jsBlogContainer">
+      <div class="container">
          <div class="blog_card_item" v-for="item in currentPosts" :key="item.id">
              <div class="blog_card_item_left">
                  <div class="blog_card_item_img_wrapper">
@@ -17,7 +17,10 @@
                                class="blog_card_item_permalink" v-html="item.title">
                      </NuxtLink>
                  </div>
-                 <div class="blog_card_item_author">
+                 <div class="blog_card_item_author"
+                   :data-translate-value="translates.REVIEW_AUTHOR[config.LANG]"
+                   data-translate-key="REVIEW_AUTHOR"
+                   >
                    <p>{{translates.REVIEW_AUTHOR[config.LANG]}}: <span>{{item.author}}</span> {{item.date | post_data}}</p>    
                  </div>   
                  <div class="blog_card_item_excerpt">
@@ -25,16 +28,27 @@
                  </div>
                  <div class="blog_card_item_btn_wrapper">
                      <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" 
-                               class="blog_card_item_btn">{{translates.DETAILED_OVERVIEW[config.LANG]}}
+                        class="blog_card_item_btn"
+                        :data-translate-value="translates.DETAILED_OVERVIEW[config.LANG]"
+                        data-translate-key="DETAILED_OVERVIEW"       
+                     >
+                               {{translates.DETAILED_OVERVIEW[config.LANG]}}
                      </NuxtLink>
                  </div>
              </div>
          </div>
       </div>
+      <div class="container jsBlogContainer"></div>
       <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)" >
-        <button class="btn_review jsBlogLoadMore">{{translates.DOWNLOAD_MORE[config.LANG]}}</button>
+        <button class="btn_review jsBlogLoadMore" 
+            :data-apiUrl="config.API_URL" 
+            :data-postsOnQuery="numberPostOnQuery"
+            :data-ampPrefix="config.AMP_PREFIX"
+        >
+            {{translates.DOWNLOAD_MORE[config.LANG]}}
+        </button>
       </div>
-  </section>
+  </section> 
 </amp-script>
 </template>
 <script>

@@ -1,11 +1,13 @@
 <template>
 <div>
     <app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
-    <app_banner_amp />
-    <app_h1_amp :value="data.body.h1" />
-    <app_casino_loop_amp :posts="data.body.casino" />
-    <app_content_amp :value="data.body.amp_content" />
-    <app_blog_card_amp :posts="data.body.blog" />
+    <main>
+        <app_banner_amp />
+        <app_h1_amp :value="data.body.h1" />
+        <app_casino_loop_amp :posts="data.body.casino" />
+        <app_content_amp :value="data.body.amp_content" />
+        <app_blog_card_amp :posts="data.body.blog" v-if="data.body.blog.length" />
+    </main>
     <app_footer_amp :options="data.options" />
 </div>
 </template>
@@ -19,7 +21,7 @@
     import app_blog_card_amp from '~/components/blog_card/app_blog_card_amp'
     import app_header_amp from '~/components/header/app-header_amp'
     import app_footer_amp from '~/components/footer/app-footer_amp'
-    import config from '~/config/index'
+    import config from '~/config'
 export default {
     name: "main-page",
     amp: 'hybrid',
