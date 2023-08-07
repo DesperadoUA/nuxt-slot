@@ -10,5 +10,6 @@ export default {
         uk: 'Українська',
         ru: 'Русский'
     },
-    HTML_ATTRS: 'ru'
+    HTML_ATTRS: 'ru',
+    API_URL: 'https://media.onlinecasino.kyiv.ua/wp-content/themes/api/app/'
 }

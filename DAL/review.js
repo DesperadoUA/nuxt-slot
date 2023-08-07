@@ -1,5 +1,5 @@
 import axios from 'axios'
-import config from './config';
+import config from '../config'
 
 class DAL_Reviews {
     static setReview(data) {
