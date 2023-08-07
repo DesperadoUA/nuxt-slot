@@ -1,4 +1,5 @@
 <template>
+<amp-script layout="container" :src="`${config.BASE_URL}/amp-casino.js`" class="sample">
   <section class="casino_table_wrapper">
       <div class="container">
           <div class="casino_item" v-for="item in currentPosts" :key="item.id">
@@ -45,16 +46,32 @@
               </div>
               <div class="casino_item_buttons casino_item_column ">
                   <div class="casino_item_buttons_box">
-                    <a class="btn_ref" :href="getRef(item)">{{translates.GO_TO[config.LANG]}}</a>
-                    <NuxtLink class="btn_review" no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" >{{translates.REVIEW[config.LANG]}}</NuxtLink>
+                    <a class="btn_ref" :href="getRef(item)">
+                        {{translates.GO_TO[config.LANG]}}
+                    </a>
+                    <NuxtLink class="btn_review" 
+                      no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" >
+                      {{translates.REVIEW[config.LANG]}}
+                    </NuxtLink>
                   </div>
               </div>
-          </div>  
+          </div>
+          <div class="loadContainer"></div>
           <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)">
-              <button class="btn_review" @click="postShowMore">{{translates.DOWNLOAD_MORE[config.LANG]}}</button>
+              <button class="btn_review loadMoreBtn" 
+                :data-apiUrl="config.API_URL" 
+                :data-postsOnQuery="numberPostOnQuery"
+                :data-ampPrefix="config.AMP_PREFIX"
+                :data-post-type="post_type"
+                :data-post-url="post_url"
+                :data-translate-go-to="translates.GO_TO[config.LANG]"
+                :data-translate-review="translates.REVIEW[config.LANG]"
+              >
+              {{translates.DOWNLOAD_MORE[config.LANG]}}</button>
           </div>
       </div>
   </section>
+</amp-script>
 </template>
 
 <script>
@@ -62,7 +79,20 @@ import translateMixin from '~/mixins/translate.js'
 import getRef from '~/mixins/getRef.js'
     export default {
         name: "app_casino_loop_amp",
-        props: ['posts'],
+        props: {
+           posts: {
+               type: Array,
+               default: []
+           }, 
+           post_type: {
+               default: 'page',
+               type: String
+           },
+           post_url: {
+                default: '/',
+                type: String
+           }
+        },
         mixins: [translateMixin, getRef],
         data(){
             return {
@@ -80,11 +110,6 @@ import getRef from '~/mixins/getRef.js'
                 return Math.trunc(item/10)
             }
         },
-        methods: {
-            postShowMore(){
-                this.postCurrentPage += 1
-            }
-        }
     }
 </script>
 <style>

@@ -5,7 +5,7 @@
         <app_banner_amp :value="data.body.h1" />
         <app_breadcrumb_amp :value="data.body.title" />
         <app_top_content_amp :value="data.body" />   
-        <app_casino_loop_amp :posts="data.body.casino" />   
+        <app_casino_loop_amp :posts="data.body.casino" post_type="payment" :post_url="data.body.routeParamsId" />   
         <app_faq_amp :value="data.body.faq" :title="data.body.faq_title" />          
     </main>
     <app_footer_amp :options="data.options" />
@@ -59,6 +59,7 @@
               data.body.faq = faq
               data.body.currentUrl = config.BASE_URL + route.path
               data.options = options.data
+              data.body.routeParamsId = route.params.id
               return {data}
            }
         },
