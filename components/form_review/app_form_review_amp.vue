@@ -1,49 +1,55 @@
 <template>
+<amp-script layout="container" :src="`${config.BASE_URL}/amp-review-form.js`" class="sample">
   <section class="form_review">
       <div class="container">
           <div class="reviews_title">{{translates.LEAVE_YOUR_REVIEW[config.LANG]}}</div>
-          <form class="reviews_form_wrapper" method="post" action-xhr="https://example.com/subscribe">
+          <div class="reviews_form_wrapper">
               <div class="reviews_form_wrapper_input">
                   <input type="text" 
-                         class="form_input" 
-                         v-model="name" 
+                         class="form_input jsInputName" 
+                         name="name"
                          :placeholder="translates.NAME[config.LANG]"
                          >
                   <input type="text" 
-                         class="form_input" 
-                         v-model="email"
+                         class="form_input jsInputEmail" 
+                         name="email"
                          :placeholder="translates.OUR_EMAIL[config.LANG]"
                          > 
               </div>
-              <textarea class="form_textarea" 
-                        v-model="text"
+              <textarea class="form_textarea jsInputMsg" 
+                        name="msg"
                         :placeholder="translates.WRITE_TEXT_YOUR_REVIEW[config.LANG]"
               ></textarea>     
               <div class="form_review_rating">
-                  <amp-img v-for="item in 10" 
-                       :key="item" 
-                       :src="(item) <= currentRating ? '/img/Star.png': '/img/Star_empty.png'" 
-                       @click="chengRating(item)" 
-                       class="rating_stars"
-                       width="16" height="16"
-                       ></amp-img>
-                       <span class="form_rating_value"><b>{{currentRating}}</b>/10</span>
+                    <span class="jsRatingContainer">
+                        <amp-img v-for="item in 10" 
+                            :key="item" 
+                            :src="(item) <= currentRating ? '/img/Star.png': '/img/Star_empty.png'" 
+                            class="rating_stars jsRating"
+                            width="16" height="16"
+                            :data-index="item"
+                        ></amp-img>
+                    </span>
+                    <span class="form_rating_value"><b class="jsCurrentRating">{{currentRating}}</b>/10</span>
               </div>   
               <div class="form_review_submit">
                   <button class="form_review_send"
-                          v-on:click.stop.prevent="sendReview"
+                    :data-apiUrl="config.API_URL+'reviews/'" 
+                    :data-post-id="id"
+                    :data-translate-enter-name="translates.ENTER_YOUR_NAME[config.LANG]"
+                    :data-translate-invalid-postal-address="translates.INVALID_POSTAL_ADDRESS[config.LANG]"
+                    :data-translate-add-your-review="translates.ADD_YOUR_REVIEW[config.LANG]"
+                    :data-translate-review-added-for-moderation="translates.REVIEW_ADDED_FOR_MODERATION[config.LANG]"
                   >{{translates.SEND[config.LANG]}}</button>
               </div>
-              <div class="error" v-if="msg.length !== 0">
-                    <p v-for="(item, index) in msg" :key="index">{{item}}</p>
-              </div>            
-          </form>
+              <div class="error jsErrorContainer"></div>            
+          </div>
       </div>
   </section>
+</amp-script>
 </template>
 
 <script>
-    import DAL_Reviews from '~/DAL/review'
     import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_form_review",
@@ -58,6 +64,7 @@
                currentRating: 1
             }
         },
+        /*
         methods: {
             chengRating(item){
                 this.currentRating = item
@@ -84,6 +91,6 @@
                   this.text = ''
               }
             }
-        }
+        }*/
     }
 </script>

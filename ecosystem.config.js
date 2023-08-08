@@ -1,10 +1,12 @@
 module.exports = {
   apps: [
     {
-      name: 'myapp3',
+      name: 'front-ru',
       script: './node_modules/nuxt/bin/nuxt.js',
-      args: 'start'
+      args: 'start',
+     "env": {
+        "PORT": "3000",
+	}
     }
   ]
 }
-
