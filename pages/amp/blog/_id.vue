@@ -14,7 +14,13 @@
                     </div>
                 </div>
             </section>
-            <app_reviews_amp :value="data.body.reviews" :title="data.body.title" />
+            <app_reviews_amp 
+                v-if="data.body.reviews.length"
+                :value="data.body.reviews" 
+                :title="data.body.title" 
+                post_type="blog" 
+                :post_url="data.body.routeParamsId"
+            />
             <app_form_review_amp :id="data.body.id" /> 
         </main>
         <app_footer_amp :options="data.options" />
@@ -60,6 +66,7 @@
                data.body = data.body
                data.body.currentUrl = config.BASE_URL + route.path
                data.options = options.data
+               data.body.routeParamsId = route.params.id
                return {data}
            }
         },
@@ -211,27 +218,3 @@
         }
     }
 </script>
-
-<style>
-   .blog_section {
-       display: flex;
-   }
-   .blog_section .container {
-       width: 100%;
-       max-width: 100%;
-   }
-   .blog_section_left {
-       width:918px;
-   }
-   .blog_section_right {
-       flex-grow: 1;
-   }
-   @media (min-width: 320px) and (max-width: 767px) {
-       .blog_section {
-           flex-wrap: wrap;
-       } 
-       .blog_section_left, .blog_section_right {
-           width: 100%;
-       }
-   }
-</style>

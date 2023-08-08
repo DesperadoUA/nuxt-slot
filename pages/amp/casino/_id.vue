@@ -12,8 +12,13 @@
     <app_faq_amp         :value="data.body.faq"
                      :title="data.body.faq_title"
                      />
-    <app_reviews_amp     :value="data.body.reviews" 
-                     :title="data.body.title" />
+    <app_reviews_amp 
+        v-if="data.body.reviews.length"
+        :value="data.body.reviews" 
+        :title="data.body.title" 
+        post_type="casino" 
+        :post_url="data.body.routeParamsId"
+    />
     <app_form_review_amp :id="data.body.id" />      
     <app_slick_button_amp :referal="{ref:data.body.ref}" />
   </main>
@@ -103,6 +108,7 @@
                data.body.event = event
                data.body.currentUrl = config.BASE_URL + route.path
                data.options = options.data
+               data.body.routeParamsId = route.params.id
                return {data}
            }
         },
@@ -253,7 +259,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

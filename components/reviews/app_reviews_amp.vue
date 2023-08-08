@@ -1,5 +1,6 @@
 
 <template>
+<amp-script layout="container" :src="`${config.BASE_URL}/amp-review.js`" class="sample">
   <section class="reviews" v-if="value.length !== 0"  
            itemprop="review" 
            itemscope itemtype="http://schema.org/Review">
@@ -28,18 +29,43 @@
                   {{item.review_text}}
               </div>
           </div>
+          <div class="loadContainer"></div>
           <div class="reviews_show_more" v-if="value.length > (numberReviewOnQuery*reviewCurrentPage)">
-              <span class="review_btn_show" @click="reviewShowMore">{{translates.SHOW_MORE[config.LANG]}}</span>
+              <span class="review_btn_show loadMoreBtn"
+                :data-apiUrl="config.API_URL" 
+                :data-postsOnQuery="numberReviewOnQuery"
+                :data-ampPrefix="config.AMP_PREFIX"
+                :data-post-type="post_type"
+                :data-post-url="post_url"
+              >{{translates.SHOW_MORE[config.LANG]}}</span>
           </div>
       </div>
   </section>
+</amp-script>
 </template>
 
 <script>
 import translateMixin from '~/mixins/translate.js'
     export default {
         name: "app_reviews_amp",
-        props: ['value', 'title'],
+        props: {
+            title: {
+                type: String,
+                default: ''
+            },
+            value: {
+                default: [],
+                type: Array
+            },
+            post_type: {
+               default: 'page',
+               type: String
+           },
+           post_url: {
+                default: '/',
+                type: String
+           }
+        },
         mixins: [translateMixin],
         data(){
             return {
@@ -50,11 +76,6 @@ import translateMixin from '~/mixins/translate.js'
         computed: {
             currentReviews() {
                return this.value.slice(0, this.numberReviewOnQuery * this.reviewCurrentPage)
-            }
-        },
-        methods: {
-            reviewShowMore(){
-                this.reviewCurrentPage += 1
             }
         },
         filters:{
