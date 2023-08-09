@@ -9,7 +9,11 @@
              ></amp-img>
       </NuxtLink>
       <button class="hamburger navbar__btn" on='tap:sidebar1.toggle'>
-          <span class="bar">X</span>
+          <span class="bar">
+            <div class="bar_line"></div>
+            <div class="bar_line"></div>
+            <div class="bar_line"></div>
+          </span>
       </button>
       <amp-sidebar id="sidebar1" layout="nodisplay" side="right">
           <ul class="nav_menu">
