@@ -106,7 +106,7 @@
 
                data.body.faq = faq
                data.body.event = event
-               data.body.currentUrl = config.BASE_URL + route.path
+               data.body.currentUrl = config.BASE_URL + route.path.replace(`${config.AMP_PREFIX}`, '')
                data.options = options.data
                data.body.routeParamsId = route.params.id
                return {data}

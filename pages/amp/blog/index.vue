@@ -46,13 +46,13 @@ export default {
       type: "page",
       url: "blog"
     };
-    const response = await DAL_Page.getData(request);
-    const options = await DAL_Options.getOptions();
-    const body = response.data;
-    const data = body;
-    data.body.currentUrl = config.BASE_URL + route.path;
-    data.options = options.data;
-    return { data };
+    const response = await DAL_Page.getData(request)
+    const options = await DAL_Options.getOptions()
+    const body = response.data
+    const data = body
+    data.body.currentUrl = config.BASE_URL + route.path.replace(`${config.AMP_PREFIX}`, '')
+    data.options = options.data
+    return { data }
   },
   head() {
     return {
