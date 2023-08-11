@@ -30,13 +30,5 @@ export default {
     API_URL: {
         RU: 'https://media.onlinecasino.kyiv.ua/wp-content/themes/api/app/',
         UA: 'https://uk-media.onlinecasino.kyiv.ua/wp-content/themes/api/app/'
-    },
-    PORT: {
-        RU: 3000,
-        UA: 2001
-    },
-    APP_NAME: {
-        RU: 'front-ru',
-        UA: 'front-ua',
     }
 }
