@@ -36,7 +36,8 @@ export default {
         const response = await DAL_Page.getData(request)
         const body = response.data  
         const data = body
-        data.body.currentUrl = config.BASE_URL
+        data.body.currentUrl = config.BASE_URL[config.LANG]
+        data.body.ampUrl = config.BASE_URL[config.LANG] + config.AMP_PREFIX + route.path
         data.body.headerLinks = helper.hreflang(data.body.hreflang)
         store.dispatch('options/setHrefLang', data.body.headerLinks)
         return {data}

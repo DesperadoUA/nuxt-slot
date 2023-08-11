@@ -1,5 +1,5 @@
 <template>
-<amp-script layout="container" :src="`${config.BASE_URL}/amp-review-form.js`" class="sample">
+<amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/amp-review-form.js`" class="sample">
   <section class="form_review">
       <div class="container">
           <div class="reviews_title">{{translates.LEAVE_YOUR_REVIEW[config.LANG]}}</div>
@@ -34,7 +34,7 @@
               </div>   
               <div class="form_review_submit">
                   <button class="form_review_send"
-                    :data-apiUrl="config.API_URL+'reviews/'" 
+                    :data-apiUrl="config.API_URL[config.LANG]+'reviews/'" 
                     :data-post-id="id"
                     :data-translate-enter-name="translates.ENTER_YOUR_NAME[config.LANG]"
                     :data-translate-invalid-postal-address="translates.INVALID_POSTAL_ADDRESS[config.LANG]"

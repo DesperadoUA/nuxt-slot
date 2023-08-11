@@ -42,7 +42,7 @@ export default {
         const options = await DAL_Options.getOptions()
         const body = response.data  
         const data = body
-        data.body.currentUrl = config.BASE_URL
+        data.body.currentUrl = config.BASE_URL[config.LANG]
         data.options = options.data
         return {data}
     },

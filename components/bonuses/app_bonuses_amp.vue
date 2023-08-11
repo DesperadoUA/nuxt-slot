@@ -39,8 +39,8 @@
            <meta itemprop="eventStatus" content="https://schema.org/EventScheduled">
            <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
            <span itemprop="organizer" itemscope="" itemtype="https://schema.org/Organization">
-             <meta itemprop="name" :content="config.DOMAIN">
-		         <meta itemprop="url" :content="config.DOMAIN">
+             <meta itemprop="name" :content="config.DOMAIN[config.LANG]">
+		         <meta itemprop="url" :content="config.DOMAIN[config.LANG]">
            </span>
            <span itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
               <meta itemprop="Price" content="0">

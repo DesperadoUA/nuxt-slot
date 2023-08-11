@@ -12,13 +12,13 @@ export default class Helper {
             }
             return str
         }
-        const arrSort = config.SORT_REFLANG
+        const arrSort = config.SORT_REFLANG[config.LANG]
         const adapterLang = {
             'uk-UA': 'UK',
             'ru-UA': 'RU'
         }
         let newArr = []
-        const defaultItem = arr.filter(item => item.lang === config.DEFAULT_LANG)
+        const defaultItem = arr.filter(item => item.lang === config.DEFAULT_LANG[config.LANG])
         if(defaultItem.length !== 0) {
             arrSort.forEach(item => {
                 if(item === 'x-default') newArr.push({

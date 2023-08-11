@@ -3,7 +3,7 @@ import config from '../config'
 
 class DAL_Reviews {
     static setReview(data) {
-        return axios.post(config.API_URL+'reviews/', data)
+        return axios.post(config.API_URL[config.LANG]+'reviews/', data)
     }
 }
 export default DAL_Reviews

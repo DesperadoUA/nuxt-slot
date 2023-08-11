@@ -1,16 +1,42 @@
 export default {
-    //BASE_URL: 'https://onlinecasino.kyiv.ua',
-    BASE_URL: 'https://test.onlinecasino.kyiv.ua',
+    BASE_URL: {
+        RU: 'https://onlinecasino.kyiv.ua',
+        UA: 'https://uk.onlinecasino.kyiv.ua'
+    },
+    //BASE_URL: 'https://test.onlinecasino.kyiv.ua',
     //BASE_URL: 'http://localhost:3000',
     LANG: 'RU',
     AMP_PREFIX: '/amp',
-    DEFAULT_LANG: 'ru-UA',
-    DOMAIN: 'test.onlinecasino.kyiv.ua',
-    SORT_REFLANG: ['ru-UA', 'x-default', 'uk-UA'],
-    LANG_TITLES: {
-        uk: 'Українська',
-        ru: 'Русский'
+    DEFAULT_LANG: {
+        RU: 'ru-UA',
+        UA: 'ru-UA'
     },
-    HTML_ATTRS: 'ru',
-    API_URL: 'https://media.onlinecasino.kyiv.ua/wp-content/themes/api/app/'
+    DOMAIN: {
+        RU: 'onlinecasino.kyiv.ua',
+        UA: 'uk.onlinecasino.kyiv.ua'
+    },
+    SORT_REFLANG: {
+        RU: ['ru-UA', 'x-default', 'uk-UA'],
+        UA: ['uk-UA', 'x-default', 'ru-UA'] 
+    },
+    LANG_TITLES: {
+        RU: { uk: 'Українська', ru: 'Русский' },
+        UA: { uk: 'Українська', ru: 'Русский' } 
+    },
+    HTML_ATTRS: {
+        RU: 'ru',
+        UA: 'uk'
+    },
+    API_URL: {
+        RU: 'https://media.onlinecasino.kyiv.ua/wp-content/themes/api/app/',
+        UA: 'https://uk-media.onlinecasino.kyiv.ua/wp-content/themes/api/app/'
+    },
+    PORT: {
+        RU: 3000,
+        UA: 2001
+    },
+    APP_NAME: {
+        RU: 'front-ru',
+        UA: 'front-ua',
+    }
 }

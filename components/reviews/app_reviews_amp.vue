@@ -1,6 +1,6 @@
 
 <template>
-<amp-script layout="container" :src="`${config.BASE_URL}/amp-review.js`" class="sample">
+<amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/amp-review.js`" class="sample">
   <section class="reviews" v-if="value.length !== 0"  
            itemprop="review" 
            itemscope itemtype="http://schema.org/Review">
@@ -32,7 +32,7 @@
           <div class="loadContainer"></div>
           <div class="reviews_show_more" v-if="value.length > (numberReviewOnQuery*reviewCurrentPage)">
               <span class="review_btn_show loadMoreBtn"
-                :data-apiUrl="config.API_URL" 
+                :data-apiUrl="config.API_URL[config.LANG]" 
                 :data-postsOnQuery="numberReviewOnQuery"
                 :data-ampPrefix="config.AMP_PREFIX"
                 :data-post-type="post_type"

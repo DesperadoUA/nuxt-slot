@@ -64,7 +64,7 @@
                const body = response.data  
                const data = body
                data.body = data.body
-               data.body.currentUrl = config.BASE_URL + route.path.replace(`${config.AMP_PREFIX}`, '')
+               data.body.currentUrl = config.BASE_URL[config.LANG] + route.path.replace(`${config.AMP_PREFIX}`, '')
                data.options = options.data
                data.body.routeParamsId = route.params.id
                return {data}

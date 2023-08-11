@@ -40,7 +40,7 @@ import translateMixin from '~/mixins/translate.js'
             }
         },
         mounted(){
-            this.title = config.LANG_TITLES[config.LANG.toLowerCase()]
+            this.title = config.LANG_TITLES[config.LANG][config.LANG.toLowerCase()]
         }
     }
 </script>

@@ -23,7 +23,7 @@ export const actions = {
     setHrefLang({commit}, state) {
         const newState = state.filter(item => item.hreflang !== 'x-default').map(item => {
             return {
-                title: config.LANG_TITLES[item.hreflang],
+                title: config.LANG_TITLES[config.LANG][item.hreflang],
                 link: item.href
             }
         })

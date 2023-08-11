@@ -1,5 +1,5 @@
 <template>
-<amp-script layout="container" :src="`${config.BASE_URL}/amp-casino.js`" class="sample">
+<amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/amp-casino.js`" class="sample">
   <section class="casino_table_wrapper">
       <div class="container">
           <div class="casino_item" v-for="item in currentPosts" :key="item.id">
@@ -59,7 +59,7 @@
           <div class="loadContainer"></div>
           <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)">
               <button class="btn_review loadMoreBtn" 
-                :data-apiUrl="config.API_URL" 
+                :data-apiUrl="config.API_URL[config.LANG]" 
                 :data-postsOnQuery="numberPostOnQuery"
                 :data-ampPrefix="config.AMP_PREFIX"
                 :data-post-type="post_type"

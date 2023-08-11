@@ -1,7 +1,7 @@
 <template>
   <amp-script
     layout="container"
-    :src="`${config.BASE_URL}/amp-blog.js`"
+    :src="`${config.BASE_URL[config.LANG]}/amp-blog.js`"
     class="sample"
   >
     <section class="blog_card_wrapper">
@@ -57,7 +57,7 @@
       >
         <button
           class="btn_review loadMoreBtn"
-          :data-apiUrl="config.API_URL"
+          :data-apiUrl="config.API_URL[config.LANG]"
           :data-postsOnQuery="numberPostOnQuery"
           :data-ampPrefix="config.AMP_PREFIX"
           :data-translate-review-author="translates.REVIEW_AUTHOR[config.LANG]"
