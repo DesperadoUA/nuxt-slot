@@ -40,7 +40,11 @@ import translateMixin from '~/mixins/translate.js'
             }
         },
         mounted(){
-            this.title = config.LANG_TITLES[config.LANG][config.LANG.toLowerCase()]
+            const adapterLang = {
+                RU: 'ru',
+                UA: 'uk'
+            }
+            this.title = config.LANG_TITLES[config.LANG][adapterLang[config.LANG]]
         }
     }
 </script>
