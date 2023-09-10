@@ -1,5 +1,5 @@
-import DAL_Pages from '../client/DAL/static_pages'
-import config from '../client/config'
+import DAL_Pages from './DAL/static_pages'
+import config from './config'
 export default {
   mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
