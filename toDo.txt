@@ -1,6 +1,6 @@
 [] Add amp script
     [x] Casino
-    [] Blog
+    [x] Blog
     [] Review
     [] Review-form
 [] Внедрить getTranslate
