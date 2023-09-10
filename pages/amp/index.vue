@@ -12,7 +12,13 @@
 				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery >= data.body.casino.length"
 			/>
 			<app_content_amp :value="data.body.amp_content" />
-			<app_blog_card_amp :posts="data.body.blog" v-if="data.body.blog.length" />
+			<script_amp :src="BlogPathScript" v-if="BlogNumberPostOnQuery < data.body.blog.length">
+				<app_blog_card_amp :posts="data.body.blog" v-if="data.body.blog.length" />
+			</script_amp>
+			<app_blog_card_amp
+				:posts="data.body.blog"
+				v-if="data.body.blog.length !== 0 && BlogNumberPostOnQuery >= data.body.blog.length"
+			/>
 		</main>
 		<app_footer_amp :options="data.options" />
 	</div>
@@ -31,6 +37,8 @@ import config from '~/config'
 import script_amp from '~/components/script_amp'
 import { CASINO as CasinoNumberPostOnQuery } from '~/config/postLoader'
 import { CASINO as CasinoPathScript } from '~/config/ampPathScript'
+import { BLOG as BlogNumberPostOnQuery } from '~/config/postLoader'
+import { BLOG as BlogPathScript } from '~/config/ampPathScript'
 export default {
 	name: 'main-page',
 	amp: 'hybrid',
@@ -39,7 +47,9 @@ export default {
 		return {
 			data: {},
 			CasinoNumberPostOnQuery,
-			CasinoPathScript
+			CasinoPathScript,
+			BlogNumberPostOnQuery,
+			BlogPathScript
 		}
 	},
 	components: {

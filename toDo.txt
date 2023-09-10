@@ -1,3 +1,7 @@
 [] Add amp script
+    [x] Casino
+    [] Blog
+    [] Review
+    [] Review-form
 [] Внедрить getTranslate
 [] Изменить нейминг файлов
