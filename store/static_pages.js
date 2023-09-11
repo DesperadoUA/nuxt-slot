@@ -1,18 +1,18 @@
 import DAL_Pages from '~/DAL/static_pages'
 
 export const state = () => ({
-    body: null
+	body: null
 })
 export const mutations = {
-    setState(state, data) {
-        state.body = data
-    }
+	setState(state, data) {
+		state.body = data
+	}
 }
 export const actions = {
-    async setState({commit}, state) {
-        localStorage.setItem('test', 'Key')
-        //localStorage.getItem('options')
-        /*
+	async setState({ commit }, state) {
+		localStorage.setItem('test', 'Key')
+		//localStorage.getItem('options')
+		/*
         if(this.state.options.options === null)  {
             const dataOptions = localStorage.getItem('options')
             if(dataOptions) {
@@ -23,10 +23,10 @@ export const actions = {
                 localStorage.setItem('options', JSON.stringify(result.data))
             }
         } */
-    },
+	}
 }
 export const getters = {
-    getState(state) {
-        return state.body
-    },
+	getState(state) {
+		return state.body
+	}
 }
