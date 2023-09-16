@@ -2,7 +2,7 @@
 	<main>
 		<Banner :value="data.body.h1" />
 		<Breadcrumb :value="data.body.title" />
-		<app_casino_top :value="data.body" />
+		<CasinoTop :value="data.body" />
 		<app_bonuses :value="data.body.event" />
 		<app_how_to :value="data.body.how_to" />
 		<app_video :banner_src="data.body.video_banner" :video_src="data.body.video_iframe" />
@@ -18,7 +18,7 @@
 import DAL_Page from '~/DAL/static_pages'
 import Banner from '~/components/banner/app_banner_casino'
 import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
-import app_casino_top from '~/components/casino_top/app_casino_top'
+import CasinoTop from '~/components/casino_top/app_casino_top'
 import app_bonuses from '~/components/bonuses/app_bonuses.vue'
 import app_how_to from '~/components/how_to/app_how_to.vue'
 import Content from '~/components/content/app-content'
@@ -38,7 +38,7 @@ export default {
 		Banner,
 		Content,
 		Breadcrumb,
-		app_casino_top,
+		CasinoTop,
 		app_reviews,
 		app_form_review,
 		Faq,

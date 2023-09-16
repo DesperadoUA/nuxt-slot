@@ -4,7 +4,7 @@
 		<main>
 			<BannerAmp :value="data.body.h1" />
 			<BreadcrumbAmp :value="data.body.title" />
-			<app_casino_top_amp :value="data.body" />
+			<CasinoTopAmp :value="data.body" />
 			<app_bonuses_amp :value="data.body.event" />
 			<app_how_to_amp :value="data.body.how_to" />
 			<app_video_amp :video_src="data.body.video_iframe" />
@@ -37,7 +37,7 @@ import DAL_Page from '~/DAL/static_pages'
 import DAL_Options from '~/DAL/options'
 import BannerAmp from '~/components/banner/app_banner_casino_amp'
 import BreadcrumbAmp from '~/components/breadcrumb/app_breadcrumb_amp'
-import app_casino_top_amp from '~/components/casino_top/app_casino_top_amp'
+import CasinoTopAmp from '~/components/casino_top/app_casino_top_amp'
 import app_bonuses_amp from '~/components/bonuses/app_bonuses_amp'
 import app_how_to_amp from '~/components/how_to/app_how_to_amp'
 import FaqAmp from '~/components/faq/app_faq_amp'
@@ -57,7 +57,7 @@ export default {
 	components: {
 		BannerAmp,
 		BreadcrumbAmp,
-		app_casino_top_amp,
+		CasinoTopAmp,
 		app_reviews_amp,
 		app_form_review_amp,
 		FaqAmp,
