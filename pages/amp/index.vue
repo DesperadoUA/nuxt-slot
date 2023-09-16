@@ -13,9 +13,9 @@
 			/>
 			<app_content_amp :value="data.body.amp_content" />
 			<script_amp :src="BlogPathScript" v-if="BlogNumberPostOnQuery < data.body.blog.length">
-				<app_blog_card_amp :posts="data.body.blog" v-if="data.body.blog.length" />
+				<BlogLoopAmp :posts="data.body.blog" />
 			</script_amp>
-			<app_blog_card_amp
+			<BlogLoopAmp
 				:posts="data.body.blog"
 				v-if="data.body.blog.length !== 0 && BlogNumberPostOnQuery >= data.body.blog.length"
 			/>
@@ -29,7 +29,7 @@ import DAL_Options from '~/DAL/options'
 import app_banner_amp from '~/components/banner/app_banner_main_amp'
 import app_h1_amp from '~/components/h1/app-h1_amp'
 import app_casino_loop_amp from '~/components/casino_loop/app_casino_loop_amp'
-import app_blog_card_amp from '~/components/blog_card/app_blog_card_amp'
+import BlogLoopAmp from '~/components/blog_loop/app_blog_card_amp'
 import config from '~/config'
 import script_amp from '~/components/script_amp'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
@@ -52,7 +52,7 @@ export default {
 	components: {
 		app_h1_amp,
 		app_casino_loop_amp,
-		app_blog_card_amp,
+		BlogLoopAmp,
 		app_banner_amp,
 		script_amp
 	},
