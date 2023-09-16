@@ -3,7 +3,7 @@
 		<app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
 		<main>
 			<BannerAmp :value="data.body.h1" />
-			<app_breadcrumb_amp :value="data.body.title" />
+			<BreadcrumbAmp :value="data.body.title" />
 			<app_top_content_amp :value="data.body" />
 			<script_amp :src="CasinoPathScript" v-if="CasinoNumberPostOnQuery < data.body.casino.length">
 				<CasinoLoopAmp :posts="data.body.casino" post_type="vendor" :post_url="data.body.routeParamsId" />
@@ -24,7 +24,7 @@
 import DAL_Page from '~/DAL/static_pages'
 import DAL_Options from '~/DAL/options'
 import BannerAmp from '~/components/banner/app_banner_casino_amp'
-import app_breadcrumb_amp from '~/components/breadcrumb/app_breadcrumb_amp'
+import BreadcrumbAmp from '~/components/breadcrumb/app_breadcrumb_amp'
 import CasinoLoopAmp from '~/components/casino_loop/app_casino_loop_amp'
 import app_top_content_amp from '~/components/top_content/app_top_content_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
@@ -38,7 +38,7 @@ export default {
 	name: 'app_single_vendor_amp',
 	components: {
 		BannerAmp,
-		app_breadcrumb_amp,
+		BreadcrumbAmp,
 		CasinoLoopAmp,
 		app_top_content_amp,
 		app_faq_amp,

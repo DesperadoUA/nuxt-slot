@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<Banner :value="data.body.h1" />
-		<app_breadcrumb :value="data.body.title" />
+		<Breadcrumb :value="data.body.title" />
 		<app_casino_top :value="data.body" />
 		<app_bonuses :value="data.body.event" />
 		<app_how_to :value="data.body.how_to" />
@@ -17,7 +17,7 @@
 <script>
 import DAL_Page from '~/DAL/static_pages'
 import Banner from '~/components/banner/app_banner_casino'
-import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
+import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import app_casino_top from '~/components/casino_top/app_casino_top'
 import app_bonuses from '~/components/bonuses/app_bonuses.vue'
 import app_how_to from '~/components/how_to/app_how_to.vue'
@@ -37,7 +37,7 @@ export default {
 	components: {
 		Banner,
 		Content,
-		app_breadcrumb,
+		Breadcrumb,
 		app_casino_top,
 		app_reviews,
 		app_form_review,

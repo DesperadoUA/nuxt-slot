@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<Banner :value="data.body.h1" />
-		<app_breadcrumb :value="data.body.title" />
+		<Breadcrumb :value="data.body.title" />
 		<app_top_content :value="data.body" />
 		<CasinoLoop :posts="data.body.casino" />
 		<app_faq :value="data.body.faq" :title="data.body.faq_title" />
@@ -11,7 +11,7 @@
 <script>
 import DAL_Page from '~/DAL/static_pages'
 import Banner from '~/components/banner/app_banner_casino'
-import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
+import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import CasinoLoop from '~/components/casino_loop/app_casino_loop'
 import app_top_content from '~/components/top_content/app_top_content'
 import app_faq from '~/components/faq/app_faq'
@@ -22,7 +22,7 @@ import helper from '~/helpers'
 export default {
 	name: 'app_single_payment',
 	mixins: [headMixin],
-	components: { Banner, app_breadcrumb, CasinoLoop, app_faq, app_top_content },
+	components: { Banner, Breadcrumb, CasinoLoop, app_faq, app_top_content },
 	data: () => {
 		return {
 			data: {}

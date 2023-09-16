@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<Banner :value="data.body.h1" />
-		<app_breadcrumb :value="data.body.title" />
+		<Breadcrumb :value="data.body.title" />
 		<section>
 			<div class="container blog_section">
 				<div class="blog_section_left">
@@ -21,7 +21,7 @@
 import DAL_Page from '~/DAL/static_pages'
 import Banner from '~/components/banner/app_banner_casino'
 import Content from '~/components/content/app-content'
-import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
+import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import app_reviews from '~/components/reviews/app_reviews'
 import app_form_review from '~/components/form_review/app_form_review'
 import app_sidebar from '~/components/sidebar/app_sidebar'
@@ -32,7 +32,7 @@ import helper from '~/helpers'
 export default {
 	name: 'app_single_blog',
 	mixins: [headMixin],
-	components: { Banner, Content, app_breadcrumb, app_reviews, app_form_review, app_sidebar },
+	components: { Banner, Content, Breadcrumb, app_reviews, app_form_review, app_sidebar },
 	data: () => {
 		return {
 			data: {}

@@ -3,7 +3,7 @@
 		<app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
 		<main>
 			<BannerAmp :value="data.body.h1" />
-			<app_breadcrumb_amp :value="data.body.title" />
+			<BreadcrumbAmp :value="data.body.title" />
 			<app_casino_top_amp :value="data.body" />
 			<app_bonuses_amp :value="data.body.event" />
 			<app_how_to_amp :value="data.body.how_to" />
@@ -36,7 +36,7 @@
 import DAL_Page from '~/DAL/static_pages'
 import DAL_Options from '~/DAL/options'
 import BannerAmp from '~/components/banner/app_banner_casino_amp'
-import app_breadcrumb_amp from '~/components/breadcrumb/app_breadcrumb_amp'
+import BreadcrumbAmp from '~/components/breadcrumb/app_breadcrumb_amp'
 import app_casino_top_amp from '~/components/casino_top/app_casino_top_amp'
 import app_bonuses_amp from '~/components/bonuses/app_bonuses_amp'
 import app_how_to_amp from '~/components/how_to/app_how_to_amp'
@@ -56,7 +56,7 @@ export default {
 	mixins: [pageTemplateAmp],
 	components: {
 		BannerAmp,
-		app_breadcrumb_amp,
+		BreadcrumbAmp,
 		app_casino_top_amp,
 		app_reviews_amp,
 		app_form_review_amp,
