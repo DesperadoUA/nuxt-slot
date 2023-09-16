@@ -3,7 +3,7 @@
 		<app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
 		<main>
 			<BannerAmp />
-			<app_h1_amp :value="data.body.h1" />
+			<H_1_Amp :value="data.body.h1" />
 			<script_amp :src="BlogPathScript" v-if="BlogNumberPostOnQuery < data.body.blog.length">
 				<BlogLoopAmp :posts="data.body.blog" />
 			</script_amp>
@@ -20,7 +20,7 @@
 <script>
 import DAL_Page from '~/DAL/static_pages'
 import DAL_Options from '~/DAL/options'
-import app_h1_amp from '~/components/h1/app-h1_amp'
+import H_1_Amp from '~/components/h1/app-h1_amp'
 import BannerAmp from '~/components/banner/app_banner_main_amp'
 import BlogLoopAmp from '~/components/blog_loop/app_blog_card_amp'
 import config from '~/config'
@@ -39,7 +39,7 @@ export default {
 	},
 	mixins: [pageTemplateAmp],
 	components: {
-		app_h1_amp,
+		H_1_Amp,
 		BannerAmp,
 		BlogLoopAmp,
 		script_amp

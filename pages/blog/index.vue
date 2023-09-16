@@ -1,14 +1,14 @@
 <template>
 	<main>
 		<Banner />
-		<app_h1 :value="data.body.h1" />
+		<H_1 :value="data.body.h1" />
 		<BlogLoop :posts="data.body.blog" />
 		<Content :value="data.body.content" />
 	</main>
 </template>
 <script>
 import DAL_Page from '~/DAL/static_pages'
-import app_h1 from '~/components/h1/app-h1'
+import H_1 from '~/components/h1/app-h1'
 import Content from '~/components/content/app-content'
 import Banner from '~/components/banner/app_banner_main'
 import BlogLoop from '~/components/blog_loop/app_blog_card'
@@ -23,7 +23,7 @@ export default {
 			data: {}
 		}
 	},
-	components: { app_h1, Content, Banner, BlogLoop },
+	components: { H_1, Content, Banner, BlogLoop },
 	async asyncData({ store, route }) {
 		const request = {
 			type: 'page',
