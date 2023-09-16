@@ -3,7 +3,7 @@
 		<Banner :value="data.body.h1" />
 		<Breadcrumb :value="data.body.title" />
 		<CasinoTop :value="data.body" />
-		<Bonuses :value="data.body.event" />
+		<Events :value="data.body.event" />
 		<HowTo :value="data.body.how_to" />
 		<Video :banner_src="data.body.video_banner" :video_src="data.body.video_iframe" />
 		<Content :value="data.body.content" />
@@ -19,7 +19,7 @@ import DAL_Page from '~/DAL/static_pages'
 import Banner from '~/components/banner/app_banner_casino'
 import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import CasinoTop from '~/components/casino_top/app_casino_top'
-import Bonuses from '~/components/bonuses/app_bonuses.vue'
+import Events from '~/components/events/app_bonuses.vue'
 import HowTo from '~/components/how_to/app_how_to.vue'
 import Content from '~/components/content/app-content'
 import Faq from '~/components/faq/app_faq'
@@ -44,7 +44,7 @@ export default {
 		Faq,
 		Video,
 		SlickButton,
-		Bonuses,
+		Events,
 		HowTo
 	},
 	data: () => {
