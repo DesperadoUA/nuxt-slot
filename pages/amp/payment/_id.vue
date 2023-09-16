@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
+		<HeaderAmp :logo="data.options.logo" :menu_links="data.options.menu_link" />
 		<main>
 			<BannerAmp :value="data.body.h1" />
 			<BreadcrumbAmp :value="data.body.title" />
@@ -16,7 +16,7 @@
 			/>
 			<FaqAmp :value="data.body.faq" :title="data.body.faq_title" />
 		</main>
-		<app_footer_amp :options="data.options" />
+		<FooterAmp :options="data.options" />
 	</div>
 </template>
 
