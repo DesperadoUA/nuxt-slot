@@ -4,7 +4,7 @@
 		<Breadcrumb :value="data.body.title" />
 		<TopContent :value="data.body" />
 		<CasinoLoop :posts="data.body.casino" />
-		<app_faq :value="data.body.faq" :title="data.body.faq_title" />
+		<Faq :value="data.body.faq" :title="data.body.faq_title" />
 	</main>
 </template>
 
@@ -14,7 +14,7 @@ import Banner from '~/components/banner/app_banner_casino'
 import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import CasinoLoop from '~/components/casino_loop/app_casino_loop'
 import TopContent from '~/components/top_content/app_top_content'
-import app_faq from '~/components/faq/app_faq'
+import Faq from '~/components/faq/app_faq'
 import config from '~/config'
 import { getErrorPageObj } from '~/utils'
 import headMixin from '~/mixins/head.js'
@@ -22,7 +22,7 @@ import helper from '~/helpers'
 export default {
 	name: 'app_single_vendor',
 	mixins: [headMixin],
-	components: { Banner, TopContent, Breadcrumb, CasinoLoop, app_faq },
+	components: { Banner, TopContent, Breadcrumb, CasinoLoop, Faq },
 	data: () => {
 		return {
 			data: {}

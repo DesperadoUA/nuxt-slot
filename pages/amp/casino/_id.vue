@@ -9,7 +9,7 @@
 			<app_how_to_amp :value="data.body.how_to" />
 			<app_video_amp :video_src="data.body.video_iframe" />
 			<ContentAmp :value="data.body.amp_content" />
-			<app_faq_amp :value="data.body.faq" :title="data.body.faq_title" />
+			<FaqAmp :value="data.body.faq" :title="data.body.faq_title" />
 			<script_amp :src="ReviewPathScript" v-if="ReviewNumberPostOnQuery < data.body.reviews.length">
 				<app_reviews_amp
 					:value="data.body.reviews"
@@ -40,7 +40,7 @@ import BreadcrumbAmp from '~/components/breadcrumb/app_breadcrumb_amp'
 import app_casino_top_amp from '~/components/casino_top/app_casino_top_amp'
 import app_bonuses_amp from '~/components/bonuses/app_bonuses_amp'
 import app_how_to_amp from '~/components/how_to/app_how_to_amp'
-import app_faq_amp from '~/components/faq/app_faq_amp'
+import FaqAmp from '~/components/faq/app_faq_amp'
 import app_reviews_amp from '~/components/reviews/app_reviews_amp'
 import app_form_review_amp from '~/components/form_review/app_form_review_amp'
 import app_video_amp from '~/components/video/app_video_amp'
@@ -60,7 +60,7 @@ export default {
 		app_casino_top_amp,
 		app_reviews_amp,
 		app_form_review_amp,
-		app_faq_amp,
+		FaqAmp,
 		app_video_amp,
 		app_slick_button_amp,
 		app_bonuses_amp,

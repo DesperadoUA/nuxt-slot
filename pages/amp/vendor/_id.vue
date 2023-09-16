@@ -14,7 +14,7 @@
 				:post_url="data.body.routeParamsId"
 				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery >= data.body.casino.length"
 			/>
-			<app_faq_amp :value="data.body.faq" :title="data.body.faq_title" />
+			<FaqAmp :value="data.body.faq" :title="data.body.faq_title" />
 		</main>
 		<app_footer_amp :options="data.options" />
 	</div>
@@ -27,7 +27,7 @@ import BannerAmp from '~/components/banner/app_banner_casino_amp'
 import BreadcrumbAmp from '~/components/breadcrumb/app_breadcrumb_amp'
 import CasinoLoopAmp from '~/components/casino_loop/app_casino_loop_amp'
 import TopContentAmp from '~/components/top_content/app_top_content_amp'
-import app_faq_amp from '~/components/faq/app_faq_amp'
+import FaqAmp from '~/components/faq/app_faq_amp'
 import config from '~/config/index.js'
 import { getErrorPageObj } from '~/utils/index.js'
 import script_amp from '~/components/script_amp'
@@ -41,7 +41,7 @@ export default {
 		BreadcrumbAmp,
 		CasinoLoopAmp,
 		TopContentAmp,
-		app_faq_amp,
+		FaqAmp,
 		script_amp
 	},
 	mixins: [pageTemplateAmp],

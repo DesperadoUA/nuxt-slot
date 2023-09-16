@@ -7,7 +7,7 @@
 		<app_how_to :value="data.body.how_to" />
 		<app_video :banner_src="data.body.video_banner" :video_src="data.body.video_iframe" />
 		<Content :value="data.body.content" />
-		<app_faq :value="data.body.faq" :title="data.body.faq_title" />
+		<Faq :value="data.body.faq" :title="data.body.faq_title" />
 		<app_reviews :value="data.body.reviews" :title="data.body.title" />
 		<app_form_review :id="data.body.id" />
 		<app_slick_button :referal="data.body.ref" />
@@ -22,7 +22,7 @@ import app_casino_top from '~/components/casino_top/app_casino_top'
 import app_bonuses from '~/components/bonuses/app_bonuses.vue'
 import app_how_to from '~/components/how_to/app_how_to.vue'
 import Content from '~/components/content/app-content'
-import app_faq from '~/components/faq/app_faq'
+import Faq from '~/components/faq/app_faq'
 import app_reviews from '~/components/reviews/app_reviews'
 import app_form_review from '~/components/form_review/app_form_review'
 import app_video from '~/components/video/app_video'
@@ -41,7 +41,7 @@ export default {
 		app_casino_top,
 		app_reviews,
 		app_form_review,
-		app_faq,
+		Faq,
 		app_video,
 		app_slick_button,
 		app_bonuses,
