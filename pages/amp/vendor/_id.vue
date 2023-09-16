@@ -4,7 +4,7 @@
 		<main>
 			<BannerAmp :value="data.body.h1" />
 			<BreadcrumbAmp :value="data.body.title" />
-			<app_top_content_amp :value="data.body" />
+			<TopContentAmp :value="data.body" />
 			<script_amp :src="CasinoPathScript" v-if="CasinoNumberPostOnQuery < data.body.casino.length">
 				<CasinoLoopAmp :posts="data.body.casino" post_type="vendor" :post_url="data.body.routeParamsId" />
 			</script_amp>
@@ -26,7 +26,7 @@ import DAL_Options from '~/DAL/options'
 import BannerAmp from '~/components/banner/app_banner_casino_amp'
 import BreadcrumbAmp from '~/components/breadcrumb/app_breadcrumb_amp'
 import CasinoLoopAmp from '~/components/casino_loop/app_casino_loop_amp'
-import app_top_content_amp from '~/components/top_content/app_top_content_amp'
+import TopContentAmp from '~/components/top_content/app_top_content_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
 import config from '~/config/index.js'
 import { getErrorPageObj } from '~/utils/index.js'
@@ -40,7 +40,7 @@ export default {
 		BannerAmp,
 		BreadcrumbAmp,
 		CasinoLoopAmp,
-		app_top_content_amp,
+		TopContentAmp,
 		app_faq_amp,
 		script_amp
 	},

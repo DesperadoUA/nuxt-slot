@@ -2,7 +2,7 @@
 	<main>
 		<Banner :value="data.body.h1" />
 		<Breadcrumb :value="data.body.title" />
-		<app_top_content :value="data.body" />
+		<TopContent :value="data.body" />
 		<CasinoLoop :posts="data.body.casino" />
 		<app_faq :value="data.body.faq" :title="data.body.faq_title" />
 	</main>
@@ -13,7 +13,7 @@ import DAL_Page from '~/DAL/static_pages'
 import Banner from '~/components/banner/app_banner_casino'
 import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import CasinoLoop from '~/components/casino_loop/app_casino_loop'
-import app_top_content from '~/components/top_content/app_top_content'
+import TopContent from '~/components/top_content/app_top_content'
 import app_faq from '~/components/faq/app_faq'
 import config from '~/config'
 import { getErrorPageObj } from '~/utils'
@@ -22,7 +22,7 @@ import helper from '~/helpers'
 export default {
 	name: 'app_single_payment',
 	mixins: [headMixin],
-	components: { Banner, Breadcrumb, CasinoLoop, app_faq, app_top_content },
+	components: { Banner, Breadcrumb, CasinoLoop, app_faq, TopContent },
 	data: () => {
 		return {
 			data: {}
