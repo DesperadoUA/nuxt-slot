@@ -5,28 +5,28 @@
 			<BannerAmp :value="data.body.h1" />
 			<BreadcrumbAmp :value="data.body.title" />
 			<CasinoTopAmp :value="data.body" />
-			<app_bonuses_amp :value="data.body.event" />
-			<app_how_to_amp :value="data.body.how_to" />
-			<app_video_amp :video_src="data.body.video_iframe" />
+			<BonusesAmp :value="data.body.event" />
+			<HowToAmp :value="data.body.how_to" />
+			<VideoAmp :video_src="data.body.video_iframe" />
 			<ContentAmp :value="data.body.amp_content" />
 			<FaqAmp :value="data.body.faq" :title="data.body.faq_title" />
 			<script_amp :src="ReviewPathScript" v-if="ReviewNumberPostOnQuery < data.body.reviews.length">
-				<app_reviews_amp
+				<ReviewsAmp
 					:value="data.body.reviews"
 					:title="data.body.title"
 					post_type="casino"
 					:post_url="data.body.routeParamsId"
 				/>
 			</script_amp>
-			<app_reviews_amp
+			<ReviewsAmp
 				v-if="data.body.reviews.length !== 0 && ReviewNumberPostOnQuery >= data.body.reviews.length"
 				:value="data.body.reviews"
 				:title="data.body.title"
 				post_type="casino"
 				:post_url="data.body.routeParamsId"
 			/>
-			<app_form_review_amp :id="data.body.id" />
-			<app_slick_button_amp :referal="{ ref: data.body.ref }" />
+			<FormReviewAmp :id="data.body.id" />
+			<SlickButtonAmp :referal="{ ref: data.body.ref }" />
 		</main>
 		<app_footer_amp :options="data.options" />
 	</div>
@@ -38,13 +38,13 @@ import DAL_Options from '~/DAL/options'
 import BannerAmp from '~/components/banner/app_banner_casino_amp'
 import BreadcrumbAmp from '~/components/breadcrumb/app_breadcrumb_amp'
 import CasinoTopAmp from '~/components/casino_top/app_casino_top_amp'
-import app_bonuses_amp from '~/components/bonuses/app_bonuses_amp'
-import app_how_to_amp from '~/components/how_to/app_how_to_amp'
+import BonusesAmp from '~/components/bonuses/app_bonuses_amp'
+import HowToAmp from '~/components/how_to/app_how_to_amp'
 import FaqAmp from '~/components/faq/app_faq_amp'
-import app_reviews_amp from '~/components/reviews/app_reviews_amp'
-import app_form_review_amp from '~/components/form_review/app_form_review_amp'
-import app_video_amp from '~/components/video/app_video_amp'
-import app_slick_button_amp from '~/components/slick_button/app_slick_button_amp'
+import ReviewsAmp from '~/components/reviews/app_reviews_amp'
+import FormReviewAmp from '~/components/form_review/app_form_review_amp'
+import VideoAmp from '~/components/video/app_video_amp'
+import SlickButtonAmp from '~/components/slick_button/app_slick_button_amp'
 import config from '~/config'
 import { getErrorPageObj } from '~/utils'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
@@ -58,13 +58,13 @@ export default {
 		BannerAmp,
 		BreadcrumbAmp,
 		CasinoTopAmp,
-		app_reviews_amp,
-		app_form_review_amp,
+		ReviewsAmp,
+		FormReviewAmp,
 		FaqAmp,
-		app_video_amp,
-		app_slick_button_amp,
-		app_bonuses_amp,
-		app_how_to_amp,
+		VideoAmp,
+		SlickButtonAmp,
+		BonusesAmp,
+		HowToAmp,
 		script_amp
 	},
 	data: () => {

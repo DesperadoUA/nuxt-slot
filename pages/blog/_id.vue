@@ -8,12 +8,12 @@
 					<Content :value="data.body.content" />
 				</div>
 				<div class="blog_section_right">
-					<app_sidebar :author="data.body.author" :date="data.body.date" />
+					<Sidebar :author="data.body.author" :date="data.body.date" />
 				</div>
 			</div>
 		</section>
-		<app_reviews :value="data.body.reviews" :title="data.body.title" />
-		<app_form_review :id="data.body.id" />
+		<Reviews :value="data.body.reviews" :title="data.body.title" />
+		<FormReview :id="data.body.id" />
 	</main>
 </template>
 
@@ -22,9 +22,9 @@ import DAL_Page from '~/DAL/static_pages'
 import Banner from '~/components/banner/app_banner_casino'
 import Content from '~/components/content/app-content'
 import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
-import app_reviews from '~/components/reviews/app_reviews'
-import app_form_review from '~/components/form_review/app_form_review'
-import app_sidebar from '~/components/sidebar/app_sidebar'
+import Reviews from '~/components/reviews/app_reviews'
+import FormReview from '~/components/form_review/app_form_review'
+import Sidebar from '~/components/sidebar/app_sidebar'
 import config from '~/config'
 import { getErrorPageObj } from '~/utils'
 import headMixin from '~/mixins/head.js'
@@ -32,7 +32,7 @@ import helper from '~/helpers'
 export default {
 	name: 'app_single_blog',
 	mixins: [headMixin],
-	components: { Banner, Content, Breadcrumb, app_reviews, app_form_review, app_sidebar },
+	components: { Banner, Content, Breadcrumb, Reviews, FormReview, Sidebar },
 	data: () => {
 		return {
 			data: {}

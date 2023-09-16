@@ -10,26 +10,26 @@
 						<ContentAmp :value="data.body.amp_content" />
 					</div>
 					<div class="blog_section_right">
-						<app_sidebar_amp :author="data.body.author" :date="data.body.date" />
+						<SidebarAmp :author="data.body.author" :date="data.body.date" />
 					</div>
 				</div>
 			</section>
 			<script_amp :src="ReviewPathScript" v-if="ReviewNumberPostOnQuery < data.body.reviews.length">
-				<app_reviews_amp
+				<ReviewsAmp
 					:value="data.body.reviews"
 					:title="data.body.title"
 					post_type="blog"
 					:post_url="data.body.routeParamsId"
 				/>
 			</script_amp>
-			<app_reviews_amp
+			<ReviewsAmp
 				v-if="data.body.reviews.length !== 0 && ReviewNumberPostOnQuery >= data.body.reviews.length"
 				:value="data.body.reviews"
 				:title="data.body.title"
 				post_type="blog"
 				:post_url="data.body.routeParamsId"
 			/>
-			<app_form_review_amp :id="data.body.id" />
+			<FormReviewAmp :id="data.body.id" />
 		</main>
 		<app_footer_amp :options="data.options" />
 	</div>
@@ -40,9 +40,9 @@ import DAL_Page from '~/DAL/static_pages'
 import DAL_Options from '~/DAL/options'
 import BannerAmp from '~/components/banner/app_banner_casino_amp'
 import BreadcrumbAmp from '~/components/breadcrumb/app_breadcrumb_amp'
-import app_reviews_amp from '~/components/reviews/app_reviews_amp'
-import app_form_review_amp from '~/components/form_review/app_form_review_amp'
-import app_sidebar_amp from '~/components/sidebar/app_sidebar_amp'
+import ReviewsAmp from '~/components/reviews/app_reviews_amp'
+import FormReviewAmp from '~/components/form_review/app_form_review_amp'
+import SidebarAmp from '~/components/sidebar/app_sidebar_amp'
 import config from '~/config'
 import { getErrorPageObj } from '~/utils/index.js'
 import script_amp from '~/components/script_amp'
@@ -55,9 +55,9 @@ export default {
 	components: {
 		BannerAmp,
 		BreadcrumbAmp,
-		app_reviews_amp,
-		app_form_review_amp,
-		app_sidebar_amp,
+		ReviewsAmp,
+		FormReviewAmp,
+		SidebarAmp,
 		script_amp
 	},
 	data: () => {

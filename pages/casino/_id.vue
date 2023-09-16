@@ -3,14 +3,14 @@
 		<Banner :value="data.body.h1" />
 		<Breadcrumb :value="data.body.title" />
 		<CasinoTop :value="data.body" />
-		<app_bonuses :value="data.body.event" />
-		<app_how_to :value="data.body.how_to" />
-		<app_video :banner_src="data.body.video_banner" :video_src="data.body.video_iframe" />
+		<Bonuses :value="data.body.event" />
+		<HowTo :value="data.body.how_to" />
+		<Video :banner_src="data.body.video_banner" :video_src="data.body.video_iframe" />
 		<Content :value="data.body.content" />
 		<Faq :value="data.body.faq" :title="data.body.faq_title" />
-		<app_reviews :value="data.body.reviews" :title="data.body.title" />
-		<app_form_review :id="data.body.id" />
-		<app_slick_button :referal="data.body.ref" />
+		<Reviews :value="data.body.reviews" :title="data.body.title" />
+		<FormReview :id="data.body.id" />
+		<SlickButton :referal="data.body.ref" />
 	</main>
 </template>
 
@@ -19,14 +19,14 @@ import DAL_Page from '~/DAL/static_pages'
 import Banner from '~/components/banner/app_banner_casino'
 import Breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import CasinoTop from '~/components/casino_top/app_casino_top'
-import app_bonuses from '~/components/bonuses/app_bonuses.vue'
-import app_how_to from '~/components/how_to/app_how_to.vue'
+import Bonuses from '~/components/bonuses/app_bonuses.vue'
+import HowTo from '~/components/how_to/app_how_to.vue'
 import Content from '~/components/content/app-content'
 import Faq from '~/components/faq/app_faq'
-import app_reviews from '~/components/reviews/app_reviews'
-import app_form_review from '~/components/form_review/app_form_review'
-import app_video from '~/components/video/app_video'
-import app_slick_button from '~/components/slick_button/app_slick_button'
+import Reviews from '~/components/reviews/app_reviews'
+import FormReview from '~/components/form_review/app_form_review'
+import Video from '~/components/video/app_video'
+import SlickButton from '~/components/slick_button/app_slick_button'
 import config from '~/config'
 import { getErrorPageObj } from '~/utils'
 import headMixin from '~/mixins/head.js'
@@ -39,13 +39,13 @@ export default {
 		Content,
 		Breadcrumb,
 		CasinoTop,
-		app_reviews,
-		app_form_review,
+		Reviews,
+		FormReview,
 		Faq,
-		app_video,
-		app_slick_button,
-		app_bonuses,
-		app_how_to
+		Video,
+		SlickButton,
+		Bonuses,
+		HowTo
 	},
 	data: () => {
 		return {
@@ -108,5 +108,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped></style>
