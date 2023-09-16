@@ -1,3 +1,4 @@
-[] Add globalDataMixin
 [] Внедрить getTranslate
 [] Изменить нейминг файлов
+[] Faq component
+[] breadcrumb

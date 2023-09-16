@@ -6,9 +6,9 @@
 			<app_breadcrumb_amp :value="data.body.title" />
 			<app_top_content_amp :value="data.body" />
 			<script_amp :src="CasinoPathScript" v-if="CasinoNumberPostOnQuery < data.body.casino.length">
-				<app_casino_loop_amp :posts="data.body.casino" post_type="payment" :post_url="data.body.routeParamsId" />
+				<CasinoLoopAmp :posts="data.body.casino" post_type="payment" :post_url="data.body.routeParamsId" />
 			</script_amp>
-			<app_casino_loop_amp
+			<CasinoLoopAmp
 				:posts="data.body.casino"
 				post_type="payment"
 				:post_url="data.body.routeParamsId"
@@ -25,7 +25,7 @@ import DAL_Page from '~/DAL/static_pages'
 import DAL_Options from '~/DAL/options'
 import app_banner_amp from '~/components/banner/app_banner_casino_amp'
 import app_breadcrumb_amp from '~/components/breadcrumb/app_breadcrumb_amp'
-import app_casino_loop_amp from '~/components/casino_loop/app_casino_loop_amp'
+import CasinoLoopAmp from '~/components/casino_loop/app_casino_loop_amp'
 import app_top_content_amp from '~/components/top_content/app_top_content_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
 import config from '~/config/index.js'
@@ -39,7 +39,7 @@ export default {
 	components: {
 		app_banner_amp,
 		app_breadcrumb_amp,
-		app_casino_loop_amp,
+		CasinoLoopAmp,
 		app_faq_amp,
 		app_top_content_amp,
 		script_amp

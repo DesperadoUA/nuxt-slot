@@ -1,10 +1,10 @@
 <template>
 	<main>
-		<app_banner :value="data.body.h1"></app_banner>
-		<app_breadcrumb :value="data.body.title"></app_breadcrumb>
-		<app_top_content :value="data.body"></app_top_content>
-		<app_casino_loop :posts="data.body.casino"></app_casino_loop>
-		<app_faq :value="data.body.faq" :title="data.body.faq_title"></app_faq>
+		<app_banner :value="data.body.h1" />
+		<app_breadcrumb :value="data.body.title" />
+		<app_top_content :value="data.body" />
+		<CasinoLoop :posts="data.body.casino" />
+		<app_faq :value="data.body.faq" :title="data.body.faq_title" />
 	</main>
 </template>
 
@@ -12,7 +12,7 @@
 import DAL_Page from '~/DAL/static_pages'
 import app_banner from '~/components/banner/app_banner_casino'
 import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
-import app_casino_loop from '~/components/casino_loop/app_casino_loop'
+import CasinoLoop from '~/components/casino_loop/app_casino_loop'
 import app_top_content from '~/components/top_content/app_top_content'
 import app_faq from '~/components/faq/app_faq'
 import config from '~/config'
@@ -22,7 +22,7 @@ import helper from '~/helpers'
 export default {
 	name: 'app_single_vendor',
 	mixins: [headMixin],
-	components: { app_banner, app_top_content, app_breadcrumb, app_casino_loop, app_faq },
+	components: { app_banner, app_top_content, app_breadcrumb, CasinoLoop, app_faq },
 	data: () => {
 		return {
 			data: {}
