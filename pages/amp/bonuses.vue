@@ -11,7 +11,7 @@
 				:posts="data.body.casino"
 				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery >= data.body.casino.length"
 			/>
-			<app_content_amp :value="data.body.amp_content" />
+			<ContentAmp :value="data.body.amp_content" />
 			<script_amp :src="BlogPathScript" v-if="BlogNumberPostOnQuery < data.body.blog.length">
 				<BlogLoopAmp :posts="data.body.blog" />
 			</script_amp>

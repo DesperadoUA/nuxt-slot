@@ -8,7 +8,7 @@
 			<app_bonuses_amp :value="data.body.event" />
 			<app_how_to_amp :value="data.body.how_to" />
 			<app_video_amp :video_src="data.body.video_iframe" />
-			<app_content_amp :value="data.body.amp_content" />
+			<ContentAmp :value="data.body.amp_content" />
 			<app_faq_amp :value="data.body.faq" :title="data.body.faq_title" />
 			<script_amp :src="ReviewPathScript" v-if="ReviewNumberPostOnQuery < data.body.reviews.length">
 				<app_reviews_amp

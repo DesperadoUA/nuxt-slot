@@ -6,7 +6,7 @@
 		<app_bonuses :value="data.body.event" />
 		<app_how_to :value="data.body.how_to" />
 		<app_video :banner_src="data.body.video_banner" :video_src="data.body.video_iframe" />
-		<app_content :value="data.body.content" />
+		<Content :value="data.body.content" />
 		<app_faq :value="data.body.faq" :title="data.body.faq_title" />
 		<app_reviews :value="data.body.reviews" :title="data.body.title" />
 		<app_form_review :id="data.body.id" />
@@ -21,7 +21,7 @@ import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import app_casino_top from '~/components/casino_top/app_casino_top'
 import app_bonuses from '~/components/bonuses/app_bonuses.vue'
 import app_how_to from '~/components/how_to/app_how_to.vue'
-import app_content from '~/components/content/app-content'
+import Content from '~/components/content/app-content'
 import app_faq from '~/components/faq/app_faq'
 import app_reviews from '~/components/reviews/app_reviews'
 import app_form_review from '~/components/form_review/app_form_review'
@@ -36,7 +36,7 @@ export default {
 	mixins: [headMixin],
 	components: {
 		app_banner,
-		app_content,
+		Content,
 		app_breadcrumb,
 		app_casino_top,
 		app_reviews,

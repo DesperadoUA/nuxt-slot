@@ -7,7 +7,7 @@
 			<section>
 				<div class="container blog_section">
 					<div class="blog_section_left">
-						<app_content_amp :value="data.body.amp_content" />
+						<ContentAmp :value="data.body.amp_content" />
 					</div>
 					<div class="blog_section_right">
 						<app_sidebar_amp :author="data.body.author" :date="data.body.date" />

@@ -3,7 +3,7 @@
 		<app_banner />
 		<app_h1 :value="data.body.h1" />
 		<CasinoLoop :posts="data.body.casino" />
-		<app_content :value="data.body.content" />
+		<Content :value="data.body.content" />
 		<BlogLoop :posts="data.body.blog" />
 	</main>
 </template>
@@ -11,7 +11,7 @@
 <script>
 import DAL_Page from '~/DAL/static_pages'
 import app_h1 from '~/components/h1/app-h1'
-import app_content from '~/components/content/app-content'
+import Content from '~/components/content/app-content'
 import CasinoLoop from '~/components/casino_loop/app_casino_loop'
 import app_banner from '~/components/banner/app_banner_main'
 import BlogLoop from '~/components/blog_loop/app_blog_card'
@@ -26,7 +26,7 @@ export default {
 			data: {}
 		}
 	},
-	components: { app_h1, app_content, CasinoLoop, app_banner, BlogLoop },
+	components: { app_h1, Content, CasinoLoop, app_banner, BlogLoop },
 	async asyncData({ store, route }) {
 		const request = {
 			type: 'page',

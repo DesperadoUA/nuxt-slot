@@ -1,7 +1,7 @@
 import translateMixin from '~/mixins/translate'
 import app_header_amp from '~/components/header/app-header_amp'
 import app_footer_amp from '~/components/footer/app-footer_amp'
-import app_content_amp from '~/components/content/app-content_amp'
+import ContentAmp from '~/components/content/app-content_amp'
 export default {
 	amp: 'hybrid',
 	ampLayout: 'default.amp',
@@ -9,7 +9,7 @@ export default {
 	components: {
 		app_header_amp,
 		app_footer_amp,
-		app_content_amp
+		ContentAmp
 	},
 	head() {
 		return {

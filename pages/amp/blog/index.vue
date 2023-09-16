@@ -11,7 +11,7 @@
 				:posts="data.body.blog"
 				v-if="data.body.blog.length !== 0 && BlogNumberPostOnQuery >= data.body.blog.length"
 			/>
-			<app_content_amp :value="data.body.amp_content" />
+			<ContentAmp :value="data.body.amp_content" />
 		</main>
 		<app_footer_amp :options="data.options" />
 	</div>

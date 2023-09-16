@@ -5,7 +5,7 @@
 		<section>
 			<div class="container blog_section">
 				<div class="blog_section_left">
-					<app_content :value="data.body.content" />
+					<Content :value="data.body.content" />
 				</div>
 				<div class="blog_section_right">
 					<app_sidebar :author="data.body.author" :date="data.body.date" />
@@ -20,7 +20,7 @@
 <script>
 import DAL_Page from '~/DAL/static_pages'
 import app_banner from '~/components/banner/app_banner_casino'
-import app_content from '~/components/content/app-content'
+import Content from '~/components/content/app-content'
 import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import app_reviews from '~/components/reviews/app_reviews'
 import app_form_review from '~/components/form_review/app_form_review'
@@ -32,7 +32,7 @@ import helper from '~/helpers'
 export default {
 	name: 'app_single_blog',
 	mixins: [headMixin],
-	components: { app_banner, app_content, app_breadcrumb, app_reviews, app_form_review, app_sidebar },
+	components: { app_banner, Content, app_breadcrumb, app_reviews, app_form_review, app_sidebar },
 	data: () => {
 		return {
 			data: {}
