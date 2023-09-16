@@ -2,7 +2,7 @@
 	<div>
 		<app_header_amp :logo="data.options.logo" :menu_links="data.options.menu_link" />
 		<main>
-			<app_banner_amp />
+			<BannerAmp />
 			<app_h1_amp :value="data.body.h1" />
 			<script_amp :src="CasinoPathScript" v-if="CasinoNumberPostOnQuery < data.body.casino.length">
 				<CasinoLoopAmp :posts="data.body.casino" />
@@ -26,7 +26,7 @@
 <script>
 import DAL_Page from '~/DAL/static_pages'
 import DAL_Options from '~/DAL/options'
-import app_banner_amp from '~/components/banner/app_banner_main_amp'
+import BannerAmp from '~/components/banner/app_banner_main_amp'
 import app_h1_amp from '~/components/h1/app-h1_amp'
 import CasinoLoopAmp from '~/components/casino_loop/app_casino_loop_amp'
 import BlogLoopAmp from '~/components/blog_loop/app_blog_card_amp'
@@ -53,7 +53,7 @@ export default {
 		app_h1_amp,
 		CasinoLoopAmp,
 		BlogLoopAmp,
-		app_banner_amp,
+		BannerAmp,
 		script_amp
 	},
 	async asyncData({ store, route }) {

@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<app_banner :value="data.body.h1" />
+		<Banner :value="data.body.h1" />
 		<app_breadcrumb :value="data.body.title" />
 		<app_casino_top :value="data.body" />
 		<app_bonuses :value="data.body.event" />
@@ -16,7 +16,7 @@
 
 <script>
 import DAL_Page from '~/DAL/static_pages'
-import app_banner from '~/components/banner/app_banner_casino'
+import Banner from '~/components/banner/app_banner_casino'
 import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import app_casino_top from '~/components/casino_top/app_casino_top'
 import app_bonuses from '~/components/bonuses/app_bonuses.vue'
@@ -35,7 +35,7 @@ export default {
 	name: 'app_single_casino',
 	mixins: [headMixin],
 	components: {
-		app_banner,
+		Banner,
 		Content,
 		app_breadcrumb,
 		app_casino_top,

@@ -1,6 +1,6 @@
 <template>
 	<main>
-		<app_banner :value="data.body.h1" />
+		<Banner :value="data.body.h1" />
 		<app_breadcrumb :value="data.body.title" />
 		<section>
 			<div class="container blog_section">
@@ -19,7 +19,7 @@
 
 <script>
 import DAL_Page from '~/DAL/static_pages'
-import app_banner from '~/components/banner/app_banner_casino'
+import Banner from '~/components/banner/app_banner_casino'
 import Content from '~/components/content/app-content'
 import app_breadcrumb from '~/components/breadcrumb/app_breadcrumb'
 import app_reviews from '~/components/reviews/app_reviews'
@@ -32,7 +32,7 @@ import helper from '~/helpers'
 export default {
 	name: 'app_single_blog',
 	mixins: [headMixin],
-	components: { app_banner, Content, app_breadcrumb, app_reviews, app_form_review, app_sidebar },
+	components: { Banner, Content, app_breadcrumb, app_reviews, app_form_review, app_sidebar },
 	data: () => {
 		return {
 			data: {}

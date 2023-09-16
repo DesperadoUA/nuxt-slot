@@ -2,3 +2,4 @@
 [] Изменить нейминг файлов
 [] Faq component
 [] breadcrumb
+[] Banner BannerCasino 
