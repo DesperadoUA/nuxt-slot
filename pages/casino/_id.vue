@@ -3,14 +3,14 @@
 		<Banner :value="data.body.h1" />
 		<Breadcrumb :value="data.body.title" />
 		<CasinoTop :value="data.body" />
-		<Events :value="data.body.event" />
+		<Events :value="data.body" />
 		<HowTo :value="data.body.how_to" />
 		<Video :banner_src="data.body.video_banner" :video_src="data.body.video_iframe" />
 		<Content :value="data.body.content" />
 		<Faq :value="data.body.faq" :title="data.body.faq_title" />
 		<Reviews :value="data.body.reviews" :title="data.body.title" />
 		<FormReview :id="data.body.id" />
-		<SlickButton :referal="data.body.ref" />
+		<SlickButton :value="data.body" />
 	</main>
 </template>
 

@@ -4,13 +4,9 @@
 		<main>
 			<BannerAmp />
 			<H_1_Amp :value="data.body.h1" />
-			<script_amp :src="CasinoPathScript" v-if="CasinoNumberPostOnQuery < data.body.casino.length">
+			<script_amp :src="CasinoPathScript">
 				<CasinoLoopAmp :posts="data.body.casino" />
 			</script_amp>
-			<CasinoLoopAmp
-				:posts="data.body.casino"
-				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery >= data.body.casino.length"
-			/>
 			<ContentAmp :value="data.body.amp_content" />
 			<script_amp :src="BlogPathScript" v-if="BlogNumberPostOnQuery < data.body.blog.length">
 				<BlogLoopAmp :posts="data.body.blog" />

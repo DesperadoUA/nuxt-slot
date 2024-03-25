@@ -10,15 +10,6 @@ export function getRef(item) {
 		return '#'
 	}
 }
-export function refActivate(items) {
-	if (items.length !== 0) {
-		const min = 0
-		const max = items.length - 1
-		const random = Math.floor(Math.random() * (max - min + 1)) + min
-		window.open(items[random].casino_ref, '_blank')
-	}
-}
-
 export function getErrorPageObj() {
 	return { statusCode: 404, message: TRANSLATE['TEXT_404'][config.LANG] }
 }

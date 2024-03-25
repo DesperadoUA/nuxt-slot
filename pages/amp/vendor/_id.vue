@@ -5,15 +5,9 @@
 			<BannerAmp :value="data.body.h1" />
 			<BreadcrumbAmp :value="data.body.title" />
 			<TopContentAmp :value="data.body" />
-			<script_amp :src="CasinoPathScript" v-if="CasinoNumberPostOnQuery < data.body.casino.length">
+			<script_amp :src="CasinoPathScript">
 				<CasinoLoopAmp :posts="data.body.casino" post_type="vendor" :post_url="data.body.routeParamsId" />
 			</script_amp>
-			<CasinoLoopAmp
-				:posts="data.body.casino"
-				post_type="vendor"
-				:post_url="data.body.routeParamsId"
-				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery >= data.body.casino.length"
-			/>
 			<FaqAmp :value="data.body.faq" :title="data.body.faq_title" />
 		</main>
 		<FooterAmp :options="data.options" />

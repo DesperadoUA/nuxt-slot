@@ -4,9 +4,13 @@
 		<main>
 			<BannerAmp />
 			<H_1_Amp :value="data.body.h1" />
-			<script_amp :src="CasinoPathScript">
+			<script_amp :src="CasinoPathScript" v-if="CasinoNumberPostOnQuery < data.body.casino.length">
 				<CasinoLoopAmp :posts="data.body.casino" />
 			</script_amp>
+			<CasinoLoopAmp
+				:posts="data.body.casino"
+				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery >= data.body.casino.length"
+			/>
 			<ContentAmp :value="data.body.amp_content" />
 			<script_amp :src="BlogPathScript" v-if="BlogNumberPostOnQuery < data.body.blog.length">
 				<BlogLoopAmp :posts="data.body.blog" />
@@ -27,7 +31,7 @@ import H_1_Amp from '~/components/h1/app-h1_amp'
 import CasinoLoopAmp from '~/components/casino_loop/app_casino_loop_amp'
 import BannerAmp from '~/components/banner/app_banner_main_amp'
 import BlogLoopAmp from '~/components/blog_loop/app_blog_card_amp'
-import config from '~/config/index.js'
+import config from '~/config'
 import script_amp from '~/components/script_amp'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import { CASINO as CasinoNumberPostOnQuery } from '~/config/postLoader'
@@ -35,7 +39,7 @@ import { CASINO as CasinoPathScript } from '~/config/ampPathScript'
 import { BLOG as BlogNumberPostOnQuery } from '~/config/postLoader'
 import { BLOG as BlogPathScript } from '~/config/ampPathScript'
 export default {
-	name: 'bonuses_amp',
+	name: 'top_amp',
 	data: () => {
 		return {
 			data: {},
@@ -56,7 +60,7 @@ export default {
 	async asyncData({ store, route }) {
 		const request = {
 			type: 'page',
-			url: 'bonuses'
+			url: 'top'
 		}
 		const response = await DAL_Page.getData(request)
 		const options = await DAL_Options.getOptions()

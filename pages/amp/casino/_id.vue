@@ -4,8 +4,14 @@
 		<main>
 			<BannerAmp :value="data.body.h1" />
 			<BreadcrumbAmp :value="data.body.title" />
-			<CasinoTopAmp :value="data.body" />
-			<EventsAmp :value="data.body.event" />
+			<script_amp :src="CasinoReferralPathScript" v-if="data.body.relative_casino.length">
+				<CasinoTopAmp :value="data.body" />
+			</script_amp>
+			<CasinoTopAmp v-else :value="data.body" />
+			<script_amp :src="CasinoEventsPathScript" v-if="data.body.relative_casino.length">
+				<EventsAmp :value="data.body" />
+			</script_amp>
+			<EventsAmp :value="data.body" v-else />
 			<HowToAmp :value="data.body.how_to" />
 			<VideoAmp :video_src="data.body.video_iframe" />
 			<ContentAmp :value="data.body.amp_content" />
@@ -26,7 +32,7 @@
 				:post_url="data.body.routeParamsId"
 			/>
 			<FormReviewAmp :id="data.body.id" />
-			<SlickButtonAmp :referal="{ ref: data.body.ref }" />
+			<SlickButtonAmp :value="data.body" />
 		</main>
 		<FooterAmp :options="data.options" />
 	</div>
@@ -50,7 +56,12 @@ import { getErrorPageObj } from '~/utils'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import script_amp from '~/components/script_amp'
 import { REVIEW as ReviewNumberPostOnQuery } from '~/config/postLoader'
-import { REVIEW as ReviewPathScript } from '~/config/ampPathScript'
+import {
+	REVIEW as ReviewPathScript,
+	CASINO_REFERRAL as CasinoReferralPathScript,
+	CASINO_SLICK_BUTTON as CasinoSlickButtonPathScript,
+	CASINO_EVENTS as CasinoEventsPathScript
+} from '~/config/ampPathScript'
 export default {
 	name: 'app_single_casino_amp',
 	mixins: [pageTemplateAmp],
@@ -71,7 +82,10 @@ export default {
 		return {
 			data: {},
 			ReviewNumberPostOnQuery,
-			ReviewPathScript
+			ReviewPathScript,
+			CasinoReferralPathScript,
+			CasinoSlickButtonPathScript,
+			CasinoEventsPathScript
 		}
 	},
 	async asyncData({ route, error, store }) {

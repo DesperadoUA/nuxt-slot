@@ -1,11 +1,25 @@
 <template>
 	<section class="casino_table_wrapper">
-		<div class="container">
+		<div
+			class="container"
+			id="casino_loop"
+			:data-post-type="post_type"
+			:data-post-url="post_url"
+			:data-apiUrl="config.API_URL[config.LANG]"
+			:data-amp-prefix="config.AMP_PREFIX"
+			:data-translate-go-to="translates.GO_TO[config.LANG]"
+			:data-translate-referral-modal-btn="translates.REFERRAL_MODAL_BTN[config.LANG]"
+			:data-translate-referral-modal-title="translates.REFERRAL_MODAL_TITLE[config.LANG]"
+			:data-translate-referral-modal-description="translates.REFERRAL_MODAL_DESCRIPTION[config.LANG]"
+		>
 			<div class="casino_item" v-for="item in currentPosts" :key="item.id">
 				<div class="casino_item_thumbnail">
-					<a :href="getRef(item)">
+					<a :href="getRef(item)" v-if="!item.relative_casino.length">
 						<amp-img :src="item.thumbnail" width="200" height="100"></amp-img>
 					</a>
+					<div v-else :data-id="item.id" class="jsReferralPopUp">
+						<amp-img :src="item.thumbnail" width="200" height="100"></amp-img>
+					</div>
 					<amp-img :src="item.marker" class="casino_item_marker" width="38" height="38"></amp-img>
 					<div class="casino_item_licensed" v-if="item.licensed.length !== 0">
 						<amp-img :src="licensed" v-for="licensed in item.licensed" :key="licensed" width="45" height="45"></amp-img>
@@ -45,9 +59,10 @@
 				</div>
 				<div class="casino_item_buttons casino_item_column ">
 					<div class="casino_item_buttons_box">
-						<a class="btn_ref" :href="getRef(item)">
+						<a class="btn_ref" :href="getRef(item)" v-if="!item.relative_casino.length">
 							{{ translates.GO_TO[config.LANG] }}
 						</a>
+						<div v-else :data-id="item.id" class="btn_ref jsReferralPopUp">{{ translates.GO_TO[config.LANG] }}</div>
 						<NuxtLink class="btn_review" no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`">
 							{{ translates.REVIEW[config.LANG] }}
 						</NuxtLink>
@@ -55,15 +70,11 @@
 				</div>
 			</div>
 			<div class="loadContainer"></div>
+			<div class="referralModalContainer"></div>
 			<div class="casino_table_btn_wrapper" v-if="posts.length > numberPostOnQuery * postCurrentPage">
 				<button
 					class="btn_review loadMoreBtn"
-					:data-apiUrl="config.API_URL[config.LANG]"
 					:data-postsOnQuery="numberPostOnQuery"
-					:data-ampPrefix="config.AMP_PREFIX"
-					:data-post-type="post_type"
-					:data-post-url="post_url"
-					:data-translate-go-to="translates.GO_TO[config.LANG]"
 					:data-translate-review="translates.REVIEW[config.LANG]"
 				>
 					{{ translates.DOWNLOAD_MORE[config.LANG] }}

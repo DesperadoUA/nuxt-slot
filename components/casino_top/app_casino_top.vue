@@ -25,7 +25,7 @@
 						</div>
 					</div>
 					<div class="casino_item_buttons_box casino_top_btn_wrapper">
-						<button class="btn_ref" @click="refActivate(value.ref)">{{ translates.GO_TO[config.LANG] }}</button>
+						<button class="btn_ref" @click="refActivate">{{ translates.GO_TO[config.LANG] }}</button>
 					</div>
 				</div>
 				<div class="casino_top_right">
@@ -105,8 +105,8 @@
 </template>
 
 <script>
-import { refActivate } from '~/utils/'
 import translateMixin from '~/mixins/translate.js'
+import { REFERRAL_MODAL_KEY } from '~/constants'
 export default {
 	name: 'app_casino_top',
 	props: ['value'],
@@ -120,8 +120,26 @@ export default {
 		}
 	},
 	methods: {
-		refActivate(items) {
-			refActivate(items)
+		refActivate() {
+			if (this.value.relative_casino.length) {
+				this.$store.dispatch('modal/setStateModal', { key: REFERRAL_MODAL_KEY, status: true })
+				const title = this.value.title_pop_up
+					? this.value.title_pop_up
+					: this.translates.REFERRAL_MODAL_TITLE[this.config.LANG]
+				const description = this.value.description_pop_up
+					? this.value.description_pop_up
+					: this.translates.REFERRAL_MODAL_DESCRIPTION[this.config.LANG]
+				this.$store.dispatch('referralCasinoModal/setTitle', title)
+				this.$store.dispatch('referralCasinoModal/setDescription', description)
+				this.$store.dispatch('referralCasinoModal/setPosts', this.value.relative_casino)
+			} else {
+				if (this.value.ref.length !== 0) {
+					const min = 0
+					const max = this.value.ref.length - 1
+					const random = Math.floor(Math.random() * (max - min + 1)) + min
+					window.open(this.value.ref[random].casino_ref, '_blank')
+				}
+			}
 		}
 	}
 }
