@@ -101,6 +101,8 @@ export default {
 .footer_menu {
 	padding-top: 10px;
 	padding-bottom: 10px;
+	position: relative;
+	z-index: 1;
 }
 .footer_menu_item {
 	display: inline-block;

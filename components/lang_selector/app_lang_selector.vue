@@ -42,7 +42,8 @@ import translateMixin from '~/mixins/translate.js'
         mounted(){
             const adapterLang = {
                 RU: 'ru',
-                UA: 'uk'
+                UA: 'uk',
+                EN: 'en'
             }
             this.title = config.LANG_TITLES[config.LANG][adapterLang[config.LANG]]
         }
