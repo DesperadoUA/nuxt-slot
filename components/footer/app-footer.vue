@@ -64,6 +64,7 @@
 			</div>
 		</div>
 		<RefModal v-if="showRefModal" />
+    <GuardPopUp v-if="showGuardModal" />
 	</footer>
 </template>
 
@@ -71,11 +72,12 @@
 import app_lang_selector from '~/components/lang_selector/app_lang_selector'
 import translateMixin from '~/mixins/translate.js'
 import RefModal from '~/components/ref_modal'
-import { REFERRAL_MODAL_KEY } from '@/constants.js'
+import GuardPopUp from '~/components/guard_pop_up'
+import { REFERRAL_MODAL_KEY, GUARD_MODAL_KEY, GUARD_COOKIE_STORAGE_KEY } from '@/constants.js'
 export default {
 	name: 'app-footer',
 	mixins: [translateMixin],
-	components: { app_lang_selector, RefModal },
+	components: { app_lang_selector, RefModal, GuardPopUp },
 	data() {
 		return {
 			options: null
@@ -92,8 +94,19 @@ export default {
 		},
 		showRefModal() {
 			return this.$store.getters['modal/getModals'][REFERRAL_MODAL_KEY]
-		}
-	}
+		},
+    showGuardModal() {
+      return this.$store.getters['modal/getModals'][GUARD_MODAL_KEY]
+    }
+	},
+  mounted() {
+    const headers = this.$store.getters['common/getHeaders']
+    const cookie = headers.cookie || ''
+    const guardHide = !cookie.includes(GUARD_COOKIE_STORAGE_KEY) ? false : true
+    if(!guardHide) {
+      this.$store.dispatch('modal/setStateModal', { key: GUARD_MODAL_KEY, status: true })
+    }
+  }
 }
 </script>
 

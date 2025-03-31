@@ -19,13 +19,16 @@ export default class Helper {
 		}
 		let newArr = []
 		arrSort.forEach(item => {
-			if (item === 'x-default')
-				newArr.push({
-					hreflang: 'x-default',
-					rel: 'alternate',
-					href: config.DEFAULT_REFLANG_DOMAIN
-				})
-			else {
+			if (item === 'x-default') {
+				const currentItem = arr.filter(langItem => langItem.lang === config.X_DEFAULT_DOMAIN_LANG)
+				if (currentItem.length) {
+					newArr.push({
+						hreflang: 'x-default',
+						rel: 'alternate',
+						href: currentItem[0].link.trim()
+					})
+				}
+			} else {
 				const currentItem = arr.filter(langItem => langItem.lang === item)
 				if (currentItem.length !== 0) {
 					newArr.push({

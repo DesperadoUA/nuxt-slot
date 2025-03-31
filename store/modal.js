@@ -1,6 +1,7 @@
-import { REFERRAL_MODAL_KEY } from '@/constants'
+import { REFERRAL_MODAL_KEY, GUARD_MODAL_KEY } from '@/constants'
 export const state = () => ({
-	[REFERRAL_MODAL_KEY]: false
+	[REFERRAL_MODAL_KEY]: false,
+  [GUARD_MODAL_KEY]: false
 })
 export const mutations = {
 	setStateModal(state, data) {

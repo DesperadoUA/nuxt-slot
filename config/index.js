@@ -1,18 +1,19 @@
 export default {
 	BASE_URL: {
-		//UA: 'https://gripe.lenddev.com.ua',
+    // RU: 'https://lenddev.com.ua',
 		RU: 'https://onlinecasino.in.ua',
-		UA: 'https://uk.onlinecasino.in.ua',
+    //RU: 'http://localhost:3000',
+    UA: 'https://uk.onlinecasino.in.ua',
 		EN: 'https://onlinecasino.coupons'
 	},
-	LANG: 'UA',
+	LANG: 'EN',
 	AMP_PREFIX: '/amp',
-	DEFAULT_REFLANG_DOMAIN: 'https://onlinecasino.coupons',
 	DEFAULT_LANG: {
 		RU: 'ru-UA',
 		UA: 'ru-UA',
 		EN: 'en'
 	},
+	X_DEFAULT_DOMAIN_LANG: 'uk-UA',
 	DOMAIN: {
 		RU: 'onlinecasino.in.ua',
 		UA: 'uk.onlinecasino.in.ua',

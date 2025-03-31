@@ -1,7 +1,7 @@
 <template>
-	<div class="modal">
+	<div class="modal" :class="customClass">
 		<div class="wrapper_modal">
-			<div class="close" @click="close"></div>
+			<div class="close" @click="close" v-if="showClose"></div>
 			<slot />
 		</div>
 	</div>
@@ -15,7 +15,15 @@ export default {
 		name: {
 			type: String,
 			default: ''
-		}
+		},
+    showClose: {
+      type: Boolean,
+      default: true
+    },
+    customClass: {
+      type: String,
+      default: ''
+    }
 	},
 	methods: {
 		close() {
@@ -29,7 +37,7 @@ export default {
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	z-index: 5;
+  z-index: 1001;
 	background: var(--modal-bg);
 	top: 0;
 	left: 0;
